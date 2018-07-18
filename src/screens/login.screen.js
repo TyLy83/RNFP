@@ -18,7 +18,7 @@ const instructions = Platform.select({
 export default class LoginScreen extends Component {
 
   componentDidMount() {
-    SplashScreen.hide()
+    //SplashScreen.hide()
     console.log(`login.screen.js ::: componentDidMount()`)
   }
 

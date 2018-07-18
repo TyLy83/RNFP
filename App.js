@@ -11,15 +11,8 @@ import {
   Text,
   View
 } from 'react-native';
-import SplashScreen from 'react-native-splash-screen';
-import LoginScreen from './login.screen';
 
-// const instructions = Platform.select({
-//   ios: 'Press Cmd+R to reload,\n' +
-//     'Cmd+D or shake for dev menu',
-//   android: 'Double tap R on your keyboard to reload,\n' +
-//     'Shake or press menu button for dev menu',
-// });
+import AppNavigator from './src/navigation/switch.navigator';
 
 
 export default class App extends Component {
@@ -31,7 +24,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <LoginScreen />
+      <AppNavigator />
     );
   }
 }
