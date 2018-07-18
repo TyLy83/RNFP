@@ -4,7 +4,7 @@ import {
     StyleSheet,
     Text,
     View,
-    ActivityIndicator
+    StatusBar
 } from 'react-native';
 
 import { Container, Header, Content, Spinner } from 'native-base';
@@ -20,6 +20,8 @@ export default class LoagingScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
+                <StatusBar
+                    />
                 <View style={styles.spinnerWrapper}>
                     <Text style={styles.indicatorTitle} >Loading</Text>
                     <Spinner color='green' />
@@ -34,12 +36,13 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'green'
+        alignItems: 'stretch',
+        backgroundColor: 'green',
     },
     spinnerWrapper: {
         backgroundColor: 'white',
         borderRadius: 3,
+        paddingTop: 10,
         paddingRight: 20,
         paddingLeft: 20,
     },

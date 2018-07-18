@@ -1,24 +1,12 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
 
 import React, { Component } from 'react';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
-
-import AppNavigator from './src/navigation/switch.navigator';
+import AppNavigator from './src/navigators/app.navigator';
 
 
 export default class App extends Component {
 
   componentDidMount() {
-    //SplashScreen.hide()
+    // for debug purpose
     console.log(`App.js : componentDidMount()`)
   }
 
@@ -29,21 +17,4 @@ export default class App extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#4F6D7A',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+

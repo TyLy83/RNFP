@@ -5,7 +5,6 @@ import {
   Text,
   View
 } from 'react-native';
-import SplashScreen from 'react-native-splash-screen';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -18,7 +17,7 @@ const instructions = Platform.select({
 export default class LoginScreen extends Component {
 
   componentDidMount() {
-    //SplashScreen.hide()
+    //debug purpose
     console.log(`login.screen.js ::: componentDidMount()`)
   }
 

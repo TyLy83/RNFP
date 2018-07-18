@@ -1,3 +1,8 @@
+/* 
+ * This navigator used for authentication process.
+ * A new user can create login, create a new user account
+ * or simply link their facebook and google account etc
+ */
 import { createStackNavigator } from 'react-navigation';
 import LoginScreen from '../screens/login.screen';
 import LoaginScreen from '../screens/loading.screen';
@@ -29,4 +34,6 @@ const routeConfig = {
     initialRouteName : 'Loading'
 }
 
-export default createStackNavigator(stackConfig, routeConfig);
+const authNavigator = createStackNavigator(stackConfig, routeConfig);
+
+export default authNavigator;

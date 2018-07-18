@@ -1,3 +1,8 @@
+/* 
+ * This navigator is simply a container of all navigator.
+ * If a user already login, the MainNavigator(main.navigator.js) will render
+ * or redirect to AuthNavigator(auth.navigator.js)
+ */
 import { createSwitchNavigator } from 'react-navigation';
 import LoginScreen from '../screens/login.screen';
 import LoaginScreen from '../screens/loading.screen';
@@ -20,7 +25,7 @@ const Login = {
 
 // stack config obj
 const switchConfig = {
-    Login: Login,
+    //Login: Login,
     Loading: Loading
 }
 
@@ -29,4 +34,6 @@ const routeConfig = {
     initialRouteName : 'Loading'
 }
 
-export default createSwitchNavigator(switchConfig, routeConfig)
+const appNavigator = createSwitchNavigator(switchConfig, routeConfig);
+
+export default appNavigator;
