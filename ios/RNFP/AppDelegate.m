@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-#import "SplashScreen.h"
+#import "RNSplashScreen.h"
 #import "AppDelegate.h"
 
 #import <React/RCTBundleURLProvider.h>
@@ -30,7 +30,7 @@
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
   
-  [SplashScreen show];
+  [RNSplashScreen show];
   
   return YES;
 }

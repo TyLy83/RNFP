@@ -1,5 +1,6 @@
 
 import React, { Component } from 'react';
+import { View, StatusBar } from 'react-native';
 import AppNavigator from './src/navigators/app.navigator';
 
 

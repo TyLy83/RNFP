@@ -9,6 +9,8 @@ import {
 
 import { Container, Header, Content, Spinner } from 'native-base';
 import SplashScreen from 'react-native-splash-screen';
+import BgfullComponent from '../components/bgfull.component';
+import BgimageComponent from '../components/bgimage.component';
 
 export default class LoagingScreen extends Component {
 
@@ -19,16 +21,23 @@ export default class LoagingScreen extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <StatusBar
-                    />
+            <BgimageComponent>
+                <StatusBar 
+                    barStyle='light-content'
+                    backgroundColor={colors.backgroundColor}
+                    hidden={true}
+                />    
                 <View style={styles.spinnerWrapper}>
                     <Text style={styles.indicatorTitle} >Loading</Text>
-                    <Spinner color='green' />
+                    <Spinner color={colors.backgroundColor} />
                 </View>
-            </View>
+            </BgimageComponent>
         )
     }
+}
+
+const colors = {
+    backgroundColor: 'green'
 }
 
 const styles = StyleSheet.create({
@@ -36,7 +45,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'center',
-        alignItems: 'stretch',
+        alignItems: 'center',
         backgroundColor: 'green',
     },
     spinnerWrapper: {
@@ -49,5 +58,5 @@ const styles = StyleSheet.create({
     indicatorTitle: {
         color: 'green'
     }
-    
+
 })
