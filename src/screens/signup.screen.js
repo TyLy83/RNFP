@@ -8,10 +8,10 @@ import {
   Image,
 } from 'react-native';
 import BgimageComponent from '../components/bgimage.component';
-import { Item, Input, Icon, Button, Text, StyleProvider, h2, H3 } from 'native-base';
+import { Item, Input, Icon, Button, Text, H3 } from 'native-base';
 
 
-export default class LoginScreen extends Component {
+export default class SignupScreen extends Component {
 
   constructor(props) {
     super(props);
@@ -20,7 +20,7 @@ export default class LoginScreen extends Component {
 
   componentDidMount() {
     //debug purpose
-    console.log(`login.screen.js ::: componentDidMount()`);
+    console.log(`signup.screen.js ::: componentDidMount()`);
   }
 
   render() {
@@ -71,19 +71,40 @@ export default class LoginScreen extends Component {
               />
             </Item>
             <Button full style={styles.buttonStyle}>
-              <Text style={styles.buttonText}>SIGN IN</Text>
+              <Text style={styles.buttonText}>SIGN UP</Text>
             </Button>
           </View>
-          <View style={styles.footer}>
-            <View style={{ flex: 1 }}>
-              <Text style={styles.footerTextStyle} onPress={() => this.props.navigation.navigate('Forgot') }>Forgot Password</Text>
-            </View>
-            <View style={{ flex: 1, flexDirection: 'row' }}>
-              <Text style={styles.footerTextStyle}>New Here? </Text>
-              <Text  style={[styles.footerTextStyle,{ fontWeight: '600'}]} onPress={() => this.props.navigation.navigate('Signup')}>Sign Up</Text>
+        </KeyboardAvoidingView>
+        <View style={{ flex: 1, justifyContent: 'center' }}>
+            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
+              <View style={{ flex: 1 }}>
+                <Text style={{ color: '#fff', paddingVertical: 10 }}>Become a member</Text>
+                <Text
+                  style={{ color: '#fff', fontWeight: '900' }}
+                  onPress={() => this.props.navigation.navigate('Login')}
+                >Sign In</Text>
+              </View>
+              <View style={{
+                flex: 1,
+                paddingHorizontal: 10,
+                borderLeftColor: '#fff',
+                borderLeftWidth: 1,
+                maxHeight: 100,
+              }}>
+                <Text style={{ color: '#fff', paddingVertical: 10 }}>Connect to social app</Text>
+                <View style={{ flex: 1, flexDirection: 'row', }}>
+                  {/* facebook login button */}
+                  <Text onPress={() => alert('facebook')}>
+                    <Icon name='facebook-square' type='FontAwesome' style={{ color: '#fff' }} />
+                  </Text>
+                  {/* google login button */}
+                  <Text style={{ paddingHorizontal: 10 }} onPress={() => alert('google')}>
+                    <Icon name='google-plus-square' type='FontAwesome' style={{ color: '#fff' }} />
+                  </Text>
+                </View>
+              </View>
             </View>
           </View>
-        </KeyboardAvoidingView>
       </BgimageComponent>
     );
   }
@@ -91,7 +112,7 @@ export default class LoginScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 3,
   },
   logoWrap: {
     flex: 3,
@@ -126,7 +147,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     paddingHorizontal: 10,
-    paddingVertical: 10
+    paddingVertical: 10,
+
   },
   formInput: {
     paddingHorizontal: 6,

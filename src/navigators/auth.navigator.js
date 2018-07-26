@@ -3,8 +3,8 @@
  * A new user can create login, create a new user account
  * or simply link their facebook and google account etc
  */
-import { createStackNavigator } from 'react-navigation';
-import LoginScreen from '../screens/login.screen';
+import { createStackNavigator, createSwitchNavigator } from 'react-navigation';
+import Login from './login.navigator';
 import LoaginScreen from '../screens/loading.screen';
 
 // loading screen
@@ -15,16 +15,8 @@ const Loading = {
     }
 }
 
-// login screen
-const Login = {
-    screen: LoginScreen,
-    navigationOptions: {
-        header: null
-    }
-}
-
 // stack config obj
-const stackConfig = {
+const switchConfig = {
     Login: Login,
     Loading: Loading
 }
@@ -34,6 +26,6 @@ const routeConfig = {
     initialRouteName : 'Loading'
 }
 
-const authNavigator = createStackNavigator(stackConfig, routeConfig);
+const authNavigator = createSwitchNavigator(switchConfig, routeConfig);
 
 export default authNavigator;

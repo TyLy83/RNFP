@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import {
-    Platform,
     StyleSheet,
-    Text,
     View,
     StatusBar
 } from 'react-native';
 
 
-export default class BgfullComponent extends Component {
+export default class BackgroundComponent extends Component {
 
     render() {
         return (
