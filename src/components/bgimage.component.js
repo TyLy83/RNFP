@@ -4,6 +4,7 @@ import {
     View,
     StatusBar,
     ImageBackground,
+    SafeAreaView
 } from 'react-native';
 
 export default class BgimageComponent extends Component {
@@ -17,10 +18,14 @@ export default class BgimageComponent extends Component {
                     hidden={true}
                 />
                 <ImageBackground
-                    source={ this.props.imageUrl }
+                    source={this.props.imageUrl}
                     style={[styles.container, styles.imageBackground]}
                 >
-                    <View style={[styles.contentWrap, { backgroundColor: this.props.coverColor }]}>{this.props.children}</View>
+                    <View style={[styles.contentWrap, { backgroundColor: this.props.coverColor }]}>
+                        <SafeAreaView style={{flex:1}}>
+                            {this.props.children}
+                        </SafeAreaView>
+                    </View>
                 </ImageBackground>
             </View>
         )
@@ -44,7 +49,3 @@ const styles = StyleSheet.create({
     },
 });
 
-
-const backgroundImage = {
-    path: require('../../assets/bg_images/bg_image_1.jpg')
-}

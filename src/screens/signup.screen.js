@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import {
-  Platform,
   StyleSheet,
   View,
-  SafeAreaView,
   KeyboardAvoidingView,
   Image,
 } from 'react-native';

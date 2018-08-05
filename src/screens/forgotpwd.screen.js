@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import BgimageComponent from '../components/bgimage.component';
 import { Item, Input, Icon, Button, Text, H3 } from 'native-base';
+import NavigatorService from '../navigators/service.navigator';
 
 
 export default class ForgotpwdScreen extends Component {
@@ -19,7 +20,7 @@ export default class ForgotpwdScreen extends Component {
   }
 
   componentDidMount() {
-    //debug purpose
+    // debug purpose
     console.log(`forgotpwd.screen.js ::: componentDidMount()`);
   }
 
@@ -42,8 +43,11 @@ export default class ForgotpwdScreen extends Component {
             </View>
             <H3 style={styles.appTitle}>BUKIN</H3>
           </View>
-          <View style={{flex: 1, justifyContent: 'flex-start'}}>
+          <View style={{ flex: 1, justifyContent: 'flex-start' }}>
             <Text>Forgot password</Text>
+            <Text onPress={() => NavigatorService.navigate('Login')}>
+              Retrun To Login
+            </Text>
           </View>
         </KeyboardAvoidingView>
       </BgimageComponent>

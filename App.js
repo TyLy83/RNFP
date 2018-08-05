@@ -1,7 +1,8 @@
 
 import React, { Component } from 'react';
-import { View, StatusBar } from 'react-native';
-import AppNavigator from './src/navigators/app.navigator';
+import { Provider } from 'mobx-react';
+import stores from './src/stores/index.store';
+import NavigatorComponent from './src/components/navigator.component';
 
 
 export default class App extends Component {
@@ -13,7 +14,10 @@ export default class App extends Component {
 
   render() {
     return (
-      <AppNavigator />
+      <Provider {...stores}>
+        <NavigatorComponent navigatorStore={stores.navigatorStore} />
+      </Provider>
+      
     );
   }
 }

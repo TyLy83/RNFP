@@ -1,0 +1,105 @@
+{
+    "state": {
+        "routes": [
+            {
+                "key": "MainNavigator",
+                "isTransitioning": false,
+                "index": 0,
+                "routes": [
+                    {
+                        "routeName": "Main",
+                        "key": "id-1533467723079-1"
+                    }
+                ],
+                "routeName": "MainNavigator",
+                "params": {
+                    "user": {
+                        "email": "user1@gmail.com"
+                    }
+                }
+            },
+            {
+                "key": "Profile",
+                "routeName": "Profile"
+            }
+        ],
+        "index": 0,
+        "isTransitioning": false,
+        "isDrawerOpen": false,
+        "openId": 0,
+        "closeId": 0,
+        "toggleId": 0,
+        "key": "SideBarNavigator",
+        "routeName": "SideBarNavigator"
+    },
+    "router": {
+        "childRouters": {
+            "MainNavigator": {
+                "childRouters": {
+                    "Main": null,
+                    "Details": null,
+                    "BottomNavigator": {
+                        "childRouters": {
+                            "Ratings": null,
+                            "Favorites": null,
+                            "Comments": null
+                        }
+                    }
+                }
+            },
+            "Profile": null
+        }
+    },
+    "actions": {},
+    "_childrenNavigation": {
+        "MainNavigator": {
+            "state": {
+                "key": "MainNavigator",
+                "isTransitioning": false,
+                "index": 0,
+                "routes": [
+                    {
+                        "routeName": "Main",
+                        "key": "id-1533467723079-1"
+                    }
+                ],
+                "routeName": "MainNavigator",
+                "params": {
+                    "user": {
+                        "email": "user1@gmail.com"
+                    }
+                }
+            },
+            "router": {
+                "childRouters": {
+                    "Main": null,
+                    "Details": null,
+                    "BottomNavigator": {
+                        "childRouters": {
+                            "Ratings": null,
+                            "Favorites": null,
+                            "Comments": null
+                        }
+                    }
+                }
+            },
+            "actions": {},
+            "_childrenNavigation": {
+                "id-1533467723079-1": {
+                    "state": {
+                        "routeName": "Main",
+                        "key": "id-1533467723079-1"
+                    },
+                    "actions": {}
+                }
+            }
+        },
+        "Profile": {
+            "state": {
+                "key": "Profile",
+                "routeName": "Profile"
+            },
+            "actions": {}
+        }
+    }
+}

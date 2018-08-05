@@ -4,9 +4,13 @@
  * or redirect to AuthNavigator(auth.navigator.js)
  */
 import { createSwitchNavigator } from 'react-navigation';
-import LoginScreen from '../screens/login.screen';
 import LoaginScreen from '../screens/loading.screen';
-import Auth from './auth.navigator';
+import AuthNavigator from './auth.navigator';
+import MainNavigator from './main.navigator';
+//import LeftNavigator from './left.navigator';
+import SideBarNavigator from './sidebar.navigator';
+
+
 
 // loading screen
 const Loading = {
@@ -17,16 +21,18 @@ const Loading = {
 }
 
 // stack config obj
-const switchConfig = {
+const appNavConfig = {
     Loading: Loading,
-    Auth: Auth
+    AuthNavigator: AuthNavigator,
+    //LeftNavigator: LeftNavigator,
+    SideBarNavigator: SideBarNavigator
 }
 
 // route config obj
-const routeConfig = {
+const appRouteConfig = {
     initialRouteName : 'Loading'
 }
 
-const appNavigator = createSwitchNavigator(switchConfig, routeConfig);
+const appNavigator = createSwitchNavigator(appNavConfig, appRouteConfig);
 
 export default appNavigator;

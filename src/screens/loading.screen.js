@@ -10,7 +10,12 @@ import {
 import { Spinner } from 'native-base';
 import SplashScreen from 'react-native-splash-screen';
 import BgimageComponent from '../components/bgimage.component';
+import { Observer, inject} from 'mobx-react/native';
+import { observer } from '../../node_modules/mobx-react';
 
+
+@inject('navigatorStore')
+@observer
 export default class LoadingScreen extends Component {
 
     constructor(props) {
@@ -19,10 +24,12 @@ export default class LoadingScreen extends Component {
 
     componentDidMount() {
         SplashScreen.hide();
+        // debugging only
         console.log(`loading.screen.js ::: componentDidMount()`);
+        // switching to authNavigator
         setTimeout(() => {
             console.log(`switching to login.screen.js`);
-            this.props.navigation.navigate('Login');
+            this.props.navigatorStore.navigate('AuthNavigator');
         }, 3000)
     }
 
