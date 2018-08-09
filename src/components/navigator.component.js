@@ -7,12 +7,9 @@ import { observer, inject } from 'mobx-react/native';
 @observer
 export default class NavigatorComponent extends Component {
     render() {        
-        console.log(`navigator component::${JSON.stringify(this.props.authenticatorStore.user)}`)
-
         return (
             <AppNavigator
                 ref={navigatorRef => NavigatorService.setTopLevelNavigator(navigatorRef)}
-                user={this.props.authenticatorStore.user}
             />
         );
     }

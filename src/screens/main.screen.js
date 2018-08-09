@@ -8,12 +8,14 @@ import {
 } from 'react-native';
 import { observer, inject } from 'mobx-react/native';
 import ContainerComponent from '../components/container.component';
-import { Icon } from 'native-base';
-import globalVariables from '../variables/global.variables';
+import variables from '../variables/index.variables';
+import HeaderBarComponent from '../components/headerbar.component';
+import ListItemComponent from '../components/listitem.component';
 
 
 @inject('navigatorStore')
 @inject('databaseStore')
+//@inject('variables')
 @observer
 export default class MainScreen extends Component {
 
@@ -24,11 +26,14 @@ export default class MainScreen extends Component {
 
     componentDidMount() {
         // debug purpose
-        console.log(`main.screen.js componentDidMount()::`);
+        // console.log(`main.screen.js componentDidMount()::`);
     }
 
     displayList(list) {
-        console.log(`list length ${list.length}`);
+        
+        const { paddingHorizontal, paddingVertical }  = variables.globalVariables;
+        const { navigatorStore } = this.props;
+
         return (
             <ScrollView
                 showsHorizontalScrollIndicator={false}
@@ -39,93 +44,24 @@ export default class MainScreen extends Component {
             >
                 {
                     list.map((item, i) => {
+
+                        const { id, restaurant } = item;
+                        const { name, description, images, ratings, favorites, comments } = restaurant;
+                        const { uri } = images[i];
+ 
                         return (
-                            <TouchableOpacity
+                            <ListItemComponent 
                                 key={i}
-                                onPress={() => this.props.navigatorStore.navigate('Details', {
-                                    key: i,
-                                    otherParam: `${item.name}`,
-                                })}
-                            >
-                                <Text
-                                    style={{
-                                        fontSize: 23,
-                                        fontWeight: '700',
-                                        marginVertical: 10,
-                                        color: '#000'
-                                    }}
-                                >
-                                    {item.name}
-                                </Text>
-                                <Image
-                                    source={item.imgUrl}
-                                    style={{
-                                        height: 226,
-                                        width: 350
-                                    }}
-                                    onPress={() => alert(`Key:: ${i}`)}
-                                />
-                                <Text
-                                    style={{
-                                        marginVertical: 10,
-                                        color: '#000'
-                                    }}
-                                >
-                                    {item.shortDesc}
-                                </Text>
-                                <View
-                                    style={{
-                                        flexDirection: 'row',
-                                        justifyContent: 'space-between'
-                                    }}
-                                >
-                                    <Text
-                                        style={{
-                                            justifyContent: 'center',
-                                            fontSize: 12,
-                                            color: '#333'
-                                        }}
-                                    >
-                                        <Icon
-                                            name='heart'
-                                            type='MaterialCommunityIcons'
-                                            style={{
-                                                fontSize: 12
-                                            }}
-                                        /> 5
-                                    </Text>
-                                    <Text
-                                        style={{
-                                            justifyContent: 'center',
-                                            fontSize: 12,
-                                            color: '#333'
-                                        }}
-                                    >
-                                        <Icon
-                                            name='star'
-                                            type='MaterialCommunityIcons'
-                                            style={{
-                                                fontSize: 12
-                                            }}
-                                        /> 4.7
-                                    </Text>
-                                    <Text
-                                        style={{
-                                            justifyContent: 'center',
-                                            fontSize: 12,
-                                            color: '#333'
-                                        }}
-                                    >
-                                        <Icon
-                                            name='comment'
-                                            type='MaterialCommunityIcons'
-                                            style={{
-                                                fontSize: 12
-                                            }}
-                                        /> 2
-                                    </Text>
-                                </View>
-                            </TouchableOpacity>
+                                id={id}
+                                name={name}
+                                description={description}
+                                paddingVertical={ paddingVertical/2 }
+                                handleClick={ navigatorStore.navigate }
+                                imageSource={uri}
+                                ratings= {ratings}
+                                favorites={favorites}
+                                comments={comments}                        
+                            />
                         )
                     })
                 }
@@ -134,22 +70,25 @@ export default class MainScreen extends Component {
     }
 
     render() {
+        
+        const { navigatorStore, databaseStore } = this.props;
+        const { paddingHorizontal, paddingVertical }  = variables.globalVariables;
+        const list = databaseStore.list;
+
         return (
             <ContainerComponent
-                paddingHorizontal={globalVariables.paddingHorizontal}
-                paddingVertical={globalVariables.paddingVertical}
+                paddingHorizontal={paddingHorizontal}
+                paddingVertical={paddingVertical}
                 backgroundColor='#fff'
             >
-                <View>
-                    <Icon
-                        name='menu'
-                        type='MaterialCommunityIcons'
-                        onPress={() => this.props.navigation.openDrawer()}
-                    />
-                </View>
+                <HeaderBarComponent
+                    title='Main'
+                    left='menu'
+                    leftNavigator={navigatorStore.openDrawer}
+                />
                 <View>
                     {
-                        this.displayList(this.props.databaseStore.list)
+                        this.displayList(list)
                     }
                 </View>
 

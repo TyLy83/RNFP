@@ -15,6 +15,7 @@ import { observer } from '../../node_modules/mobx-react';
 
 
 @inject('navigatorStore')
+@inject('authenticatorStore')
 @observer
 export default class LoadingScreen extends Component {
 
@@ -25,11 +26,12 @@ export default class LoadingScreen extends Component {
     componentDidMount() {
         SplashScreen.hide();
         // debugging only
-        console.log(`loading.screen.js ::: componentDidMount()`);
+        // console.log(`loading.screen.js ::: componentDidMount()`);
         // switching to authNavigator
         setTimeout(() => {
-            console.log(`switching to login.screen.js`);
-            this.props.navigatorStore.navigate('AuthNavigator');
+            // console.log(`switching to login.screen.js`);
+            // this.props.navigatorStore.navigate('AuthNavigator');
+            this.props.authenticatorStore.auth();
         }, 3000)
     }
 

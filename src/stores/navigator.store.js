@@ -12,4 +12,8 @@ export default class NavigatorStore {
     @action openDrawer(){
         NavigatorService.openDrawer()
     }
+
+    @action closeDrawer(){
+        NavigatorService.closeDrawer()
+    }
 }

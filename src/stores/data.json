@@ -7,27 +7,27 @@
             "images": [
                 {
                     "id": "0",
-                    "uri": "../../assets/restaurants/item_01.jpg"
+                    "uri": "item_01.jpg"
                 },
                 {
                     "id": "1",
-                    "uri": "../../assets/restaurants/item_02.jpg"
+                    "uri": "item_02.jpg"
                 },
                 {
                     "id": "2",
-                    "uri": "../../assets/restaurants/item_03.jpg"
+                    "uri": "item_03.jpg"
                 },
                 {
                     "id": "3",
-                    "uri": "../../assets/restaurants/item_04.jpg"
+                    "uri": "item_04.jpg"
                 },
                 {
                     "id": "4",
-                    "uri": "../../assets/restaurants/item_05.jpg"
+                    "uri": "item_05.jpg"
                 },
                 {
                     "id": "5",
-                    "uri": "../../assets/restaurants/item_06.jpg"
+                    "uri": "item_06.jpg"
                 }
             ]
         }
@@ -40,27 +40,27 @@
             "images": [
                 {
                     "id": "0",
-                    "uri": "../../assets/restaurants/item_01.jpg"
+                    "uri": "item_01.jpg"
                 },
                 {
                     "id": "1",
-                    "uri": "../../assets/restaurants/item_02.jpg"
+                    "uri": "item_02.jpg"
                 },
                 {
                     "id": "2",
-                    "uri": "../../assets/restaurants/item_03.jpg"
+                    "uri": "item_03.jpg"
                 },
                 {
                     "id": "3",
-                    "uri": "../../assets/restaurants/item_04.jpg"
+                    "uri": "item_04.jpg"
                 },
                 {
                     "id": "4",
-                    "uri": "../../assets/restaurants/item_05.jpg"
+                    "uri": "item_05.jpg"
                 },
                 {
                     "id": "5",
-                    "uri": "../../assets/restaurants/item_06.jpg"
+                    "uri": "item_06.jpg"
                 }
             ]
         }
@@ -73,27 +73,27 @@
             "images": [
                 {
                     "id": "0",
-                    "uri": "../../assets/restaurants/item_01.jpg"
+                    "uri": "item_01.jpg"
                 },
                 {
                     "id": "1",
-                    "uri": "../../assets/restaurants/item_02.jpg"
+                    "uri": "item_02.jpg"
                 },
                 {
                     "id": "2",
-                    "uri": "../../assets/restaurants/item_03.jpg"
+                    "uri": "item_03.jpg"
                 },
                 {
                     "id": "3",
-                    "uri": "../../assets/restaurants/item_04.jpg"
+                    "uri": "item_04.jpg"
                 },
                 {
                     "id": "4",
-                    "uri": "../../assets/restaurants/item_05.jpg"
+                    "uri": "item_05.jpg"
                 },
                 {
                     "id": "5",
-                    "uri": "../../assets/restaurants/item_06.jpg"
+                    "uri": "item_06.jpg"
                 }
             ]
         }
@@ -106,27 +106,27 @@
             "images": [
                 {
                     "id": "0",
-                    "uri": "../../assets/restaurants/item_01.jpg"
+                    "uri": "assets/restaurants/item_01.jpg"
                 },
                 {
                     "id": "1",
-                    "uri": "../../assets/restaurants/item_02.jpg"
+                    "uri": "item_02.jpg"
                 },
                 {
                     "id": "2",
-                    "uri": "../../assets/restaurants/item_03.jpg"
+                    "uri": "item_03.jpg"
                 },
                 {
                     "id": "3",
-                    "uri": "../../assets/restaurants/item_04.jpg"
+                    "uri": "item_04.jpg"
                 },
                 {
                     "id": "4",
-                    "uri": "../../assets/restaurants/item_05.jpg"
+                    "uri": "item_05.jpg"
                 },
                 {
                     "id": "5",
-                    "uri": "../../assets/restaurants/item_06.jpg"
+                    "uri": "item_06.jpg"
                 }
             ]
         }
@@ -136,30 +136,30 @@
         "restuarant": {
             "name": "Teacups & Teapots Cafe",
             "description": "This cafe is in business to create the structure and systems needed to allow our customers access to the majority of their away-from-home daily meal requirements on a one-stop-shop basis. All our products shall be of the highest quality and value, be healthy, nutritious and provided with outstanding personal services at the lowest possible prices consistent with a fair return on investment for our shareholders, job enhancement/security for our employees and a level of community involvement by everyone connected with our business. All of our products and services shall be delivered consistently and measured one satisfied customer at a time, whether by company-owned or franchised operations, in superior, clean, convenient, fun and friendly neighborhood environments. We pledge to make Yoshinoya the best place to eat and the best place to work.",
-            "images": [
+            "images":[
                 {
-                    "id": "0",
-                    "uri": "../../assets/restaurants/item_01.jpg"
+                    "id":"0",
+                    "uri":"item_01.jpg"
                 },
                 {
-                    "id": "1",
-                    "uri": "../../assets/restaurants/item_02.jpg"
+                    "id":"1",
+                    "uri":"item_02.jpg"
                 },
                 {
-                    "id": "2",
-                    "uri": "../../assets/restaurants/item_03.jpg"
+                    "id":"2",
+                    "uri":"item_03.jpg"
                 },
                 {
-                    "id": "3",
-                    "uri": "../../assets/restaurants/item_04.jpg"
+                    "id":"3",
+                    "uri":"item_04.jpg"
                 },
                 {
-                    "id": "4",
-                    "uri": "../../assets/restaurants/item_05.jpg"
+                    "id":"4",
+                    "uri":"item_05.jpg"
                 },
                 {
-                    "id": "5",
-                    "uri": "../../assets/restaurants/item_06.jpg"
+                    "id":"5",
+                    "uri":"item_06.jpg"
                 }
             ]
         }
@@ -169,30 +169,30 @@
         "restuarant": {
             "name": "Chicken Salad Lunch Bar",
             "description": "This cafe is in business to create the structure and systems needed to allow our customers access to the majority of their away-from-home daily meal requirements on a one-stop-shop basis. All our products shall be of the highest quality and value, be healthy, nutritious and provided with outstanding personal services at the lowest possible prices consistent with a fair return on investment for our shareholders, job enhancement/security for our employees and a level of community involvement by everyone connected with our business. All of our products and services shall be delivered consistently and measured one satisfied customer at a time, whether by company-owned or franchised operations, in superior, clean, convenient, fun and friendly neighborhood environments. We pledge to make Yoshinoya the best place to eat and the best place to work.",
-            "images": [
+            "images":[
                 {
-                    "id": "0",
-                    "uri": "../../assets/restaurants/item_01.jpg"
+                    "id":"0",
+                    "uri":"item_01.jpg"
                 },
                 {
-                    "id": "1",
-                    "uri": "../../assets/restaurants/item_02.jpg"
+                    "id":"1",
+                    "uri":"item_02.jpg"
                 },
                 {
-                    "id": "2",
-                    "uri": "../../assets/restaurants/item_03.jpg"
+                    "id":"2",
+                    "uri":"item_03.jpg"
                 },
                 {
-                    "id": "3",
-                    "uri": "../../assets/restaurants/item_04.jpg"
+                    "id":"3",
+                    "uri":"item_04.jpg"
                 },
                 {
-                    "id": "4",
-                    "uri": "../../assets/restaurants/item_05.jpg"
+                    "id":"4",
+                    "uri":"item_05.jpg"
                 },
                 {
-                    "id": "5",
-                    "uri": "../../assets/restaurants/item_06.jpg"
+                    "id":"5",
+                    "uri":"item_06.jpg"
                 }
             ]
         }

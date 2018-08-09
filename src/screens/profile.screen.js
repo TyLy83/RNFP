@@ -1,29 +1,33 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import ContainerComponent from '../components/container.component';
-import { Icon } from 'native-base';
+import { observer, inject } from 'mobx-react/native';
+import HeaderBarComponent from '../components/headerbar.component';
 import globalVariables from '../variables/global.variables';
 
 
+@inject('navigatorStore')
+@observer
 export default class ProfileScreen extends Component {
 
     render() {
+        const { navigatorStore } = this.props;
+
         return (
             <ContainerComponent
-                imageUrl={ require('../../assets/bg_images/bg_image_1.jpg')}
                 paddingHorizontal={globalVariables.paddingHorizontal}
                 paddingVertical={globalVariables.paddingVertical}
-                coverColor='rgba(255,255,255,0.3)'
+                backgroudColor='red'
+                coverColor='rgba(255,255,255,1)'
             >
-                <View>
-                    <Icon
-                        name='menu'
-                        type='MaterialCommunityIcons'
-                        onPress={
-                            ()=> this.props.navigation.openDrawer()
-                        }
-                    />
-                </View>
+                <HeaderBarComponent
+                    left='menu'
+                    title='Profile'
+                    right='arrow-left'
+                    leftNavigator={navigatorStore.openDrawer}
+                    rightNavigator={navigatorStore.navigate}
+                    rightParams='Main'
+                />
             </ContainerComponent>
         )
     }

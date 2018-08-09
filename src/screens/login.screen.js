@@ -21,14 +21,13 @@ export default class LoginScreen extends Component {
 		//this.state = { focus: false }
 	}
 
-	componentDidMount() {
-		//debug purpose
-		console.log(`login.screen.js ::: componentDidMount()`);
-	}
-
 	render() {
+
 		const authenticatorStore = this.props.authenticatorStore;
-		console.log(`authenticatorStore::${ JSON.stringify(authenticatorStore.user)}`)
+		const user = authenticatorStore.user;
+
+		console.log(`authenticatorStore::${JSON.stringify(authenticatorStore.user)}`)
+
 		return (
 			<BgimageComponent
 				imageUrl={require('../../assets/bg_images/bg_image_1.jpg')}
@@ -60,6 +59,7 @@ export default class LoginScreen extends Component {
 								onSubmitEditing={() => { this.PasswordInputRef._root.focus() }}
 								style={{ color: '#fff' }}
 								tintColor="#fff"
+								onChangeText={(email) => user.email = email}
 							/>
 						</Item>
 						<Item rounded style={styles.formInput}>
@@ -73,14 +73,13 @@ export default class LoginScreen extends Component {
 								autoCapitalize="none"
 								secureTextEntry={true}
 								style={{ color: '#fff' }}
+								onChangeText={(pass) => user.password = pass}
 							/>
 						</Item>
 						<Button
-							full style={styles.buttonStyle}
-							//onPress={() => this.props.authenticatorStore.signIn('user1@gmail.com', 'User@123')}
-							onPress={() => this.props.navigatorStore.navigate('MainNavigator',{
-								user: authenticatorStore.user
-							})}
+							full
+							style={styles.buttonStyle}
+							onPress={() => authenticatorStore.signIn()}
 						>
 							<Text style={styles.buttonText}>SIGN IN</Text>
 						</Button>
@@ -101,7 +100,7 @@ export default class LoginScreen extends Component {
 								style={styles.footerTextStyle}
 							>
 								New Here?
-              				</Text>
+							</Text>
 							<Text
 								style={[
 									styles.footerTextStyle,
