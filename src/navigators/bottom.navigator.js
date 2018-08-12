@@ -10,12 +10,13 @@ import FavoriteScreen from '../screens/favorite.screen';
 import RatingScreen from '../screens/rating.screen';
 
 const botNavConfig = {
-    Ratings: RatingScreen,
+    // Ratings: RatingScreen,
     Favorites: FavoriteScreen,
     Comments: CommentScreen
 }
 
-const botRouteConfig = {    
+const botRouteConfig = { 
+       
     navigationOptions: ({ navigation }) => ({
         tabBarIcon: ({ focused, tintColor }) => {
             const { routeName } = navigation.state;

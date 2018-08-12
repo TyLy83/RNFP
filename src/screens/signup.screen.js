@@ -74,35 +74,35 @@ export default class SignupScreen extends Component {
           </View>
         </KeyboardAvoidingView>
         <View style={{ flex: 1, justifyContent: 'center' }}>
-            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
-              <View style={{ flex: 1 }}>
-                <Text style={{ color: '#fff', paddingVertical: 10 }}>Become a member</Text>
-                <Text
-                  style={{ color: '#fff', fontWeight: '900' }}
-                  onPress={() => this.props.navigation.navigate('Login')}
-                >Sign In</Text>
-              </View>
-              <View style={{
-                flex: 1,
-                paddingHorizontal: 10,
-                borderLeftColor: '#fff',
-                borderLeftWidth: 1,
-                maxHeight: 100,
-              }}>
-                <Text style={{ color: '#fff', paddingVertical: 10 }}>Connect to social app</Text>
-                <View style={{ flex: 1, flexDirection: 'row', }}>
-                  {/* facebook login button */}
-                  <Text onPress={() => alert('facebook')}>
-                    <Icon name='facebook-square' type='FontAwesome' style={{ color: '#fff' }} />
-                  </Text>
-                  {/* google login button */}
-                  <Text style={{ paddingHorizontal: 10 }} onPress={() => alert('google')}>
-                    <Icon name='google-plus-square' type='FontAwesome' style={{ color: '#fff' }} />
-                  </Text>
-                </View>
+          <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
+            <View style={{ flex: 1 }}>
+              <Text style={{ color: '#fff', paddingVertical: 10 }}>Become a member</Text>
+              <Text
+                style={{ color: '#fff', fontWeight: '900' }}
+                onPress={() => this.props.navigation.navigate('Login')}
+              >Sign In</Text>
+            </View>
+            <View style={{
+              flex: 1,
+              paddingHorizontal: 10,
+              borderLeftColor: '#fff',
+              borderLeftWidth: 1,
+              maxHeight: 100,
+            }}>
+              <Text style={{ color: '#fff', paddingVertical: 10 }}>Connect to social app</Text>
+              <View style={{ flex: 1, flexDirection: 'row', }}>
+                {/* facebook login button */}
+                <Text onPress={() => alert('facebook')}>
+                  <Icon name='facebook-square' type='FontAwesome' style={{ color: '#fff' }} />
+                </Text>
+                {/* google login button */}
+                <Text style={{ paddingHorizontal: 10 }} onPress={() => alert('google')}>
+                  <Icon name='google-plus-square' type='FontAwesome' style={{ color: '#fff' }} />
+                </Text>
               </View>
             </View>
           </View>
+        </View>
       </BgimageComponent>
     );
   }

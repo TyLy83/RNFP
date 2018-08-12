@@ -6,13 +6,12 @@ import { Button, Icon, Text } from 'native-base';
 export default class HeaderBarComponent extends Component {
 
     renderLeft(left) {
-        const { leftNavigator, leftParams } = this.props;
+        const { leftNavigator, leftParams, leftKey } = this.props;
         if (left) {
             return (
                 <Button
                     transparent
-                    onPress={() => leftParams ? leftNavigator(leftParams) : leftNavigator()}
-
+                    onPress={() => leftParams ? leftNavigator(leftParams, leftKey? leftKey : {} ) : leftNavigator()}
                 >
                     <Icon
                         name={left}

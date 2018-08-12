@@ -16,4 +16,8 @@ export default class NavigatorStore {
     @action closeDrawer(){
         NavigatorService.closeDrawer()
     }
+
+    @action goToTab(tab, params){
+        NavigatorService.goToTab(tab, params)
+    }
 }

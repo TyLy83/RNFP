@@ -11,7 +11,7 @@ import ContainerComponent from '../components/container.component';
 import variables from '../variables/index.variables';
 import HeaderBarComponent from '../components/headerbar.component';
 import ListItemComponent from '../components/listitem.component';
-
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 @inject('navigatorStore')
 @inject('databaseStore')
@@ -30,8 +30,8 @@ export default class MainScreen extends Component {
     }
 
     displayList(list) {
-        
-        const { paddingHorizontal, paddingVertical }  = variables.globalVariables;
+
+        const { paddingHorizontal, paddingVertical } = variables.globalVariables;
         const { navigatorStore } = this.props;
 
         return (
@@ -39,29 +39,113 @@ export default class MainScreen extends Component {
                 showsHorizontalScrollIndicator={false}
                 showsVerticalScrollIndicator={false}
                 style={{
-                    marginVertical: 10,
+                    marginVertical: paddingVertical / 2,
                 }}
             >
                 {
                     list.map((item, i) => {
 
                         const { id, restaurant } = item;
-                        const { name, description, images, ratings, favorites, comments } = restaurant;
-                        const { uri } = images[i];
- 
+                        const { name, images, ratings, favorites, comments } = restaurant;
+                        const { uri } = images[id];
+
                         return (
-                            <ListItemComponent 
+                            <View
                                 key={i}
-                                id={id}
-                                name={name}
-                                description={description}
-                                paddingVertical={ paddingVertical/2 }
-                                handleClick={ navigatorStore.navigate }
-                                imageSource={uri}
-                                ratings= {ratings}
-                                favorites={favorites}
-                                comments={comments}                        
-                            />
+                                style={{
+                                    marginVertical: paddingVertical / 4,
+                                    paddingVertical: paddingVertical/ 2,
+                                    paddingHorizontal: paddingHorizontal,
+                                    backgroundColor: '#fff',
+                                }}
+                            >
+                                <TouchableOpacity
+                                    onPress={() => navigatorStore.navigate('Details', { 'item': item })}
+                                >
+                                    <Image
+                                        source={uri}
+                                    />
+                                    <Text
+                                        style={{
+                                            fontSize: 21,
+                                            fontWeight: '600',
+                                            paddingVertical: paddingVertical / 4
+                                        }}
+                                    >
+                                        {name}
+                                    </Text>
+                                    <View
+                                        style={{
+                                            flexDirection: 'row',
+                                            justifyContent: 'space-between',
+                                        }}
+                                    >
+                                        <View>
+                                            {
+                                                (ratings => {
+                                                    return (
+                                                        <Text>
+                                                            <Icon
+                                                                name='star-outline'
+                                                                style={{ fontSize: 18 }}
+                                                            />
+                                                            {
+                                                                (() => {
+                                                                    let stars = 0;
+                                                                    ratings.map((rating, i) => {
+                                                                        stars += rating.stars;
+                                                                    });
+
+                                                                    return (stars / ratings.length).toFixed(1);
+                                                                })()
+                                                            }
+                                                        </Text>
+                                                    )
+                                                })(ratings)
+                                            }
+                                        </View>
+                                        <View>
+                                            {
+                                                (comments => {
+                                                    return (
+                                                        <Text>
+                                                            <Icon
+                                                                name='message-outline'
+                                                                style={{
+                                                                    fontSize: 18
+                                                                }}
+                                                            />
+                                                            {
+                                                                comments.length
+                                                            }
+                                                        </Text>
+                                                    )
+                                                })(comments)
+                                            }
+                                        </View>
+                                        <View>
+                                            {
+                                                (favorites => {
+                                                    return (
+                                                        <Text>
+                                                            <Icon
+                                                                name='heart-outline'
+                                                                style={{
+                                                                    fontSize: 18
+                                                                }}
+                                                            />
+                                                            {
+                                                                favorites.length
+                                                            }
+                                                        </Text>
+                                                    )
+
+                                                })(favorites)
+                                            }
+                                        </View>
+                                    </View>
+                                </TouchableOpacity>
+                            </View>
                         )
                     })
                 }
@@ -70,28 +154,40 @@ export default class MainScreen extends Component {
     }
 
     render() {
-        
+
         const { navigatorStore, databaseStore } = this.props;
-        const { paddingHorizontal, paddingVertical }  = variables.globalVariables;
+        const { paddingHorizontal, paddingVertical } = variables.globalVariables;
         const list = databaseStore.list;
 
         return (
             <ContainerComponent
-                paddingHorizontal={paddingHorizontal}
-                paddingVertical={paddingVertical}
-                backgroundColor='#fff'
+                coverColor='#fff'
             >
-                <HeaderBarComponent
-                    title='Main'
-                    left='menu'
-                    leftNavigator={navigatorStore.openDrawer}
-                />
-                <View>
+                <View
+                    style={{
+                        paddingHorizontal: paddingHorizontal,
+                        paddingTop: paddingVertical,
+                        paddingBottom: paddingVertical/2,
+                        backgroundColor: '#fff'
+                    }}
+                >
+                    <HeaderBarComponent
+                        title='Main'
+                        left='menu'
+                        leftNavigator={navigatorStore.openDrawer}
+                    />
+                </View>
+                <View
+                    style={{
+                        flex: 1,
+                        paddingBottom: 0,
+                        backgroundColor: '#f9f9f9',
+                    }}
+                >
                     {
                         this.displayList(list)
                     }
                 </View>
-
             </ContainerComponent>
         )
     }

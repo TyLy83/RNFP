@@ -23,6 +23,7 @@ export default class ListItemComponent extends Component {
     render() {
 
         const {
+            key,
             id,
             name,
             paddingVertical,
@@ -41,7 +42,7 @@ export default class ListItemComponent extends Component {
             >
                 <TouchableOpacity
                     onPress={() => handleClick('Details', {
-                        'key': id
+                        'Key': id
                     })}
                 >
                     <Image

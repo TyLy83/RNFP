@@ -26,10 +26,20 @@ function closeDrawer(){
 	_navigator.dispatch(DrawerActions.closeDrawer())
 }
 
+function goToTab(tab, params){
+	_navigator.dispatch(
+		NavigationActions.navigate({
+			tab,
+			params,
+		})
+	)
+}
+
 export default {
 	navigate,
 	setTopLevelNavigator,
 	//getTopLevelNavigator,
 	openDrawer,
 	closeDrawer,
+	goToTab,
 };
