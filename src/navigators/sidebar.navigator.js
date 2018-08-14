@@ -5,17 +5,16 @@ import { Button, Icon } from 'native-base';
 import variables from '../variables/index.variables';
 import MainNavigator from './main.navigator';
 import ProfileScreen from '../screens/profile.screen';
-import HeaderBarComponent from '../components/headerbar.component';
 import stores from '../stores/index.store';
 
-const { width } = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 
 const contentComponent = (props) => {
 
     const navigation = props.navigation;
     const params = navigation.state.routes[0].params;
     const { authenticatorStore, navigatorStore } = stores;
-    const { globalVariables } = variables;
+    const { paddingHorizontal, paddingVertical } = variables.globalVariables;
 
     return (
 
@@ -28,11 +27,26 @@ const contentComponent = (props) => {
 
                 }}
             >
-                <HeaderBarComponent
-                    right='close'
-                    rightNavigator={navigatorStore.closeDrawer}
-                    paddingHorizontal={globalVariables.paddingHorizontal}
-                />
+                <View
+                    style={{
+                        flexDirection: 'row',
+                        justifyContent: 'flex-end',
+                        paddingHorizontal: paddingHorizontal
+                    }}
+                >
+                    <Button
+                        transparent
+                        onPress={()=>navigatorStore.closeDrawer()}
+                    >
+                        <Icon
+                            name='close'
+                            style={{
+                                color: '#000',
+                                fontSize: 30
+                            }}
+                        />
+                    </Button>
+                </View>
                 <View
                     style={{
                         width: width,
@@ -46,18 +60,28 @@ const contentComponent = (props) => {
                 <View>
                     <DrawerItems {...props} />
                 </View>
-                <View>
+                <View
+                    style={{
+                       marginVertical: paddingHorizontal
+                    }}
+                >
                     <Button
                         iconLeft
                         transparent
-                        primary
                         onPress={() => authenticatorStore.signOut()}
                     >
                         <Icon
                             name='power'
-                            type='MaterialCommunityIcons'
+                            style={{
+                                color: '#000',
+                               
+                            }}
                         />
-                        <Text>Logout</Text>
+                        <Text
+                            style={{
+                                paddingHorizontal: paddingHorizontal + 5
+                            }}
+                        >Logout</Text>
                     </Button>
                 </View>
             </SafeAreaView>
@@ -73,8 +97,8 @@ const sidebarNavigator = createDrawerNavigator(
                 drawerLabel: 'Home',
                 drawerIcon: ({ tintColor }) => (
                     <Icon
-                        name='home-outline'
-                        type='MaterialCommunityIcons'
+                        name='home'
+                        // type='MaterialCommunityIcons'
                         style={{ color: tintColor, fontSize: 20 }}
                     />
                 ),
@@ -86,8 +110,7 @@ const sidebarNavigator = createDrawerNavigator(
                 drawerLabel: 'Profile',
                 drawerIcon: ({ tintColor }) => (
                     <Icon
-                        name='account'
-                        type='MaterialCommunityIcons'
+                        name='person'
                         style={{ color: tintColor, fontSize: 20 }}
                     />
                 ),

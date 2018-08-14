@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Dimensions, ScrollView, View, Text } from 'react-native';
+import { Platform, Dimensions, ScrollView, View, Text, Image } from 'react-native';
 import { Icon, Button } from 'native-base';
 import { observer, inject } from 'mobx-react/native';
 import ContainerComponent from '../components/container.component';
@@ -29,8 +29,7 @@ export default class CommentScreen extends Component {
                 <View
                     style={{
                         paddingHorizontal: paddingHorizontal,
-                        paddingTop: paddingVertical,
-                        paddingBottom: paddingVertical / 2,
+                        paddingTop: Platform.OS === 'ios' ? paddingVertical : 0,
                         backgroundColor: '#fff',
                     }}
                 >
@@ -49,44 +48,57 @@ export default class CommentScreen extends Component {
                     <ScrollView
                         showsHorizontalScrollIndicator={false}
                         showsVerticalScrollIndicator={false}
-                        style={{
-                            marginVertical: paddingVertical / 2,
-                        }}
                     >
-                        {
-                            comments.map((comment, i) => {
-                                return (
-                                    <View
-                                        key={i}
-                                        style={{
-                                            justifyContent: 'center',
-                                            alignItems: 'center',
-                                            backgroundColor: '#fff',
-                                            marginVertical: paddingHorizontal / 2,
-                                            paddingVertical: paddingHorizontal,
-                                            paddingHorizontal: paddingHorizontal
-
-                                        }}
-                                    >
-                                        <Text
+                        <View
+                            style={{
+                                flex: 1,
+                                paddingBottom: paddingVertical * 3,
+                            }}
+                        >
+                            {
+                                comments.map((comment, i) => {
+                                    return (
+                                        <View
+                                            key={i}
                                             style={{
-                                                fontSize: 20,
-                                                paddingVertical: paddingHorizontal / 2
+                                                marginVertical: paddingHorizontal,
+                                                marginHorizontal: paddingHorizontal,
+                                                paddingVertical: paddingHorizontal,
+                                                paddingHorizontal: paddingHorizontal,
+                                                justifyContent: 'center',
+                                                alignItems: 'center',
+                                                backgroundColor: '#fff',
                                             }}
                                         >
-                                            {comment.message}
-                                        </Text>
-                                        <Text
-                                            style={{
-                                                paddingVertical: paddingHorizontal / 2
-                                            }}
-                                        >
-                                            {comment.user.fullName}
-                                        </Text>
-                                    </View>
-                                )
-                            })
-                        }
+                                            <Image
+                                                source={comment.user.pictureUri}
+                                                style={{
+                                                    height: 60,
+                                                    width: 60,
+                                                    borderRadius: 30,
+                                                }}
+                                            />
+                                            <Text
+                                                style={{
+                                                    paddingVertical: paddingHorizontal / 2
+                                                }}
+                                            >
+                                                {comment.user.fullName}
+                                            </Text>
+                                            <Text
+                                                style={{
+                                                    fontSize: 20,
+                                                    fontWeight: '700',
+                                                    paddingVertical: paddingHorizontal / 2
+                                                }}
+                                            >
+                                                {comment.message}
+                                            </Text>
+                                        </View>
+                                    )
+                                })
+                            }
+                        </View>
                     </ScrollView>
                 </View>
                 <View

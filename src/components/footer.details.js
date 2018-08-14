@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import { Button, Icon } from 'native-base';
 import { observer, inject } from 'mobx-react/native';
-// import variables from '../variables/index.variables';
+import variables from '../variables/index.variables';
+
 
 @inject('navigatorStore')
 @observer
@@ -11,6 +12,7 @@ export default class FooterDetails extends Component {
     render() {
 
         const { navigatorStore, item, title, backgroundColor } = this.props;
+        const { iconStyle } = variables.styles;
 
         return (
             <View
@@ -23,20 +25,24 @@ export default class FooterDetails extends Component {
             >
                 <Button
                     transparent
+                    onPress={() => {
+                        navigatorStore.navigate('Reservation', { 'item': item })
+                    }}
                 >
                     <Icon
-                        name='book-open'
-                        type='MaterialCommunityIcons'
-                        style={{ color: '#000', }}
+                        name={title == 'Reservation' ? 'ios-calendar' : 'ios-calendar-outline'}
+                        style={iconStyle}
                     />
                 </Button>
                 <Button
                     transparent
+                    onPress={() => {
+                        navigatorStore.navigate('Direction', { 'item': item })
+                    }}
                 >
                     <Icon
-                        name='compass-outline'
-                        type='MaterialCommunityIcons'
-                        style={{ color: '#000', }}
+                        name={title == 'Direction' ? 'ios-pin' : 'ios-pin-outline'}
+                        style={iconStyle}
                     />
                 </Button>
                 <Button
@@ -46,9 +52,8 @@ export default class FooterDetails extends Component {
                     }}
                 >
                     <Icon
-                        name={title == 'Ratings' ? 'star' : 'star-outline'}
-                        type='MaterialCommunityIcons'
-                        style={{ color: '#000' }}
+                        name={title == 'Ratings' ? 'ios-star' : 'ios-star-outline'}
+                        style={iconStyle}
                     />
                 </Button>
                 <Button
@@ -58,9 +63,8 @@ export default class FooterDetails extends Component {
                     }}
                 >
                     <Icon
-                        name={title == 'Favorites' ? 'heart' : 'heart-outline'}
-                        type='MaterialCommunityIcons'
-                        style={{ color: '#000' }}
+                        name={title == 'Favorites' ? 'ios-heart' : 'ios-heart-outline'}
+                        style={iconStyle}
                     />
                 </Button>
                 <Button
@@ -70,9 +74,8 @@ export default class FooterDetails extends Component {
                     }}
                 >
                     <Icon
-                        name={title == 'Comments' ? 'message' : 'message-outline'}
-                        type='MaterialCommunityIcons'
-                        style={{ color: '#000' }}
+                        name={title == 'Comments' ? 'ios-chatboxes' : 'ios-chatboxes-outline'}
+                        style={iconStyle}
                     />
                 </Button>
             </View>

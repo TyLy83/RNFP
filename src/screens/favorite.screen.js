@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Dimensions, ScrollView, View, Text } from 'react-native';
+import { Platform, Dimensions, ScrollView, View, Text, Image } from 'react-native';
 import { Icon } from 'native-base';
 import { observer, inject } from 'mobx-react/native';
 import ContainerComponent from '../components/container.component';
@@ -28,8 +28,7 @@ export default class FavoriteScreen extends Component {
                 <View
                     style={{
                         paddingHorizontal: paddingHorizontal,
-                        paddingTop: paddingVertical,
-                        paddingBottom: paddingVertical / 2,
+                        paddingTop: Platform.OS === 'ios' ? paddingVertical : 0,
                         backgroundColor: '#fff',
                     }}
                 >
@@ -42,20 +41,18 @@ export default class FavoriteScreen extends Component {
                 <View
                     style={{
                         flex: 4,
-                        // paddingHorizontal: paddingHorizontal,
-                        // paddingVertical: paddingVertical,
                         backgroundColor: '#f9f9f9',
                     }}
                 >
                     <ScrollView
                         showsHorizontalScrollIndicator={false}
                         showsVerticalScrollIndicator={false}
-                    //     style={{
-                    //         marginVertical: paddingVertical,
-                    //     }}
                     >
                         <View
-                            style={{ flex: 1 }}
+                            style={{
+                                flex: 1,
+                                paddingBottom: paddingVertical * 3,
+                            }}
                         >
                             {
                                 favorites.map((favorite, i) => {
@@ -63,27 +60,42 @@ export default class FavoriteScreen extends Component {
                                         <View
                                             key={i}
                                             style={{
-                                                marginVertical: paddingHorizontal / 2,
-                                                paddingVertical: paddingVertical / 2,
-                                                paddingHorizontal: paddingHorizontal,
+                                                marginVertical: i == 0 ? paddingHorizontal : paddingHorizontal / 2,
+                                                marginHorizontal: paddingHorizontal,
+                                                paddingVertical: paddingHorizontal / 2,
+                                                paddingHorizontal: paddingHorizontal / 2,
                                                 alignItems: 'center',
                                                 backgroundColor: '#fff'
                                             }}
                                         >
-                                            <Text>
-                                                <Icon
-                                                    name='heart'
-                                                    type='MaterialCommunityIcons'
-                                                    style={{ 
-                                                        color: '#000',
-                                                        fontSize: 45, 
+                                            <View
+                                                style={{
+                                                    paddingHorizontal: paddingHorizontal
+                                                }}
+                                            >
+                                                <Image
+                                                    source={favorite.user.pictureUri}
+                                                    style={{
+                                                        height: 60,
+                                                        width: 60,
+                                                        borderRadius: 30,
                                                     }}
                                                 />
-                                            </Text>
+                                            </View>
                                             <Text>
                                                 {
                                                     favorite.user.fullName
                                                 }
+                                            </Text>
+                                            <Text>
+                                                <Icon
+                                                    name='heart'
+                                                    type='MaterialCommunityIcons'
+                                                    style={{
+                                                        color: '#000',
+                                                        fontSize: 45,
+                                                    }}
+                                                />
                                             </Text>
                                         </View>
                                     )

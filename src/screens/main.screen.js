@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {
+    Platform,
+    Dimensions,
     View,
     Image,
     Text,
@@ -9,13 +11,11 @@ import {
 import { observer, inject } from 'mobx-react/native';
 import ContainerComponent from '../components/container.component';
 import variables from '../variables/index.variables';
-import HeaderBarComponent from '../components/headerbar.component';
-import ListItemComponent from '../components/listitem.component';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+//import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { Button, Icon } from 'native-base';
 
 @inject('navigatorStore')
 @inject('databaseStore')
-//@inject('variables')
 @observer
 export default class MainScreen extends Component {
 
@@ -29,18 +29,49 @@ export default class MainScreen extends Component {
         // console.log(`main.screen.js componentDidMount()::`);
     }
 
+    renderHeader() {
+
+        const { navigatorStore } = this.props;
+
+        return (
+            <View
+                style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between'
+                }}
+            >
+                <View
+                    style={{
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}
+                >
+                    <Button
+                        transparent
+                        onPress={()=> navigatorStore.openDrawer()}
+                    >
+                        <Icon
+                            name='menu'
+                            style={{
+                                color: '#000',
+                            }}
+                        />
+                    </Button>
+                </View>
+
+            </View>
+        )
+    }
+
     displayList(list) {
 
         const { paddingHorizontal, paddingVertical } = variables.globalVariables;
         const { navigatorStore } = this.props;
-
+    
         return (
             <ScrollView
                 showsHorizontalScrollIndicator={false}
                 showsVerticalScrollIndicator={false}
-                style={{
-                    marginVertical: paddingVertical / 2,
-                }}
             >
                 {
                     list.map((item, i) => {
@@ -53,8 +84,9 @@ export default class MainScreen extends Component {
                             <View
                                 key={i}
                                 style={{
-                                    marginVertical: paddingVertical / 4,
-                                    paddingVertical: paddingVertical/ 2,
+                                    marginVertical: paddingHorizontal,
+                                    marginHorizontal: paddingHorizontal,
+                                    paddingVertical: paddingVertical / 2,
                                     paddingHorizontal: paddingHorizontal,
                                     backgroundColor: '#fff',
                                 }}
@@ -64,6 +96,11 @@ export default class MainScreen extends Component {
                                 >
                                     <Image
                                         source={uri}
+                                        style={{
+                                            height: 226,
+                                            width: null,
+                                            borderRadius: 3,
+                                        }}
                                     />
                                     <Text
                                         style={{
@@ -86,8 +123,8 @@ export default class MainScreen extends Component {
                                                     return (
                                                         <Text>
                                                             <Icon
-                                                                name='star-outline'
-                                                                style={{ fontSize: 18 }}
+                                                                name='ios-star-outline'
+                                                                // style={{ fontSize: 18 }}
                                                             />
                                                             {
                                                                 (() => {
@@ -110,10 +147,8 @@ export default class MainScreen extends Component {
                                                     return (
                                                         <Text>
                                                             <Icon
-                                                                name='message-outline'
-                                                                style={{
-                                                                    fontSize: 18
-                                                                }}
+                                                                name='ios-chatboxes-outline'
+                                                                // style={{ fontSize: 18 }}
                                                             />
                                                             {
                                                                 comments.length
@@ -129,7 +164,7 @@ export default class MainScreen extends Component {
                                                     return (
                                                         <Text>
                                                             <Icon
-                                                                name='heart-outline'
+                                                                name='ios-heart-outline'
                                                                 style={{
                                                                     fontSize: 18
                                                                 }}
@@ -166,16 +201,13 @@ export default class MainScreen extends Component {
                 <View
                     style={{
                         paddingHorizontal: paddingHorizontal,
-                        paddingTop: paddingVertical,
-                        paddingBottom: paddingVertical/2,
+                        paddingTop: Platform.OS === 'ios' ? paddingVertical : 0,
                         backgroundColor: '#fff'
                     }}
                 >
-                    <HeaderBarComponent
-                        title='Main'
-                        left='menu'
-                        leftNavigator={navigatorStore.openDrawer}
-                    />
+                    {
+                        this.renderHeader()
+                    }
                 </View>
                 <View
                     style={{

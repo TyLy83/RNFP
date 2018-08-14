@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+    Platform,
     Dimensions,
     StyleSheet,
     View,
@@ -51,8 +52,8 @@ export default class DetailScreen extends Component {
                         flexDirection: 'row',
                         justifyContent: 'flex-end',
                         alignItems: 'center',
-                        paddingTop: paddingVertical,
-                        paddingBottom: paddingVertical / 2,
+                        paddingTop: Platform.OS === 'ios' ? paddingVertical : 0,
+                        paddingBottom: paddingHorizontal / 2,
                         paddingHorizontal: paddingHorizontal,
                     }}
                 >
@@ -64,13 +65,8 @@ export default class DetailScreen extends Component {
                             }}
                         >
                             <Icon
-                                name='close'
-                                type='MaterialCommunityIcons'
-                                style={{
-                                    color: '#000',
-                                    marginLeft: 0,
-                                    marginRight: 0,
-                                }}
+                                name='ios-close'
+                                style={{color:'#000'}}
                             />
                         </Button>
                     </View>
@@ -78,10 +74,6 @@ export default class DetailScreen extends Component {
                 <ScrollView
                     showsHorizontalScrollIndicator={false}
                     showsVerticalScrollIndicator={false}
-                    style={{
-                        // paddingVertical: paddingVertical,
-                        paddingHorizontal: paddingHorizontal,
-                    }}
                 >
                     {
                         images.map((image, i) => {
@@ -91,6 +83,8 @@ export default class DetailScreen extends Component {
                                     style={{
                                         marginTop: i == 0 ? 0 : paddingVertical / 2,
                                         marginBottom: i == images.length - 1 ? paddingVertical / 2 : 0,
+                                        marginHorizontal: paddingHorizontal,
+                                        paddingHorizontal: paddingHorizontal,
                                     }}
                                 >
                                     <Image
@@ -119,101 +113,93 @@ export default class DetailScreen extends Component {
             <ScrollView>
                 <View
                     style={{
-                        paddingVertical: paddingVertical / 2,
-                        paddingHorizontal: paddingHorizontal,
                         backgroundColor: '#fff',
+                        paddingVertical: paddingHorizontal,
+                        paddingHorizontal: paddingHorizontal,
+                        marginHorizontal: paddingHorizontal
                     }}
                 >
-                    <TouchableOpacity
-                        onPress={() => {
-                            this.setState({ isImageBoxOpened: true });
+                    <View>
+                        <TouchableOpacity
+                            onPress={() => {
+                                this.setState({ isImageBoxOpened: true });
+                            }}
+                        >
+                            <Image
+                                source={images[id].uri}
+                                style={{
+                                    height: 226,
+                                    width: null,
+                                    borderRadius: 3,
+                                }}
+                            />
+                        </TouchableOpacity>
+                        {
+                            this.toggledImages(images)
+                        }
+                    </View>
+                    <View
+                        style={{
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
+                            paddingVertical: paddingHorizontal,
                         }}
                     >
-                        <Image
-                            source={images[id].uri}
-                            style={{
-                                height: 226,
-                                width: null,
-                            }}
-                        />
-                    </TouchableOpacity>
-                    {
-                        this.toggledImages(images)
-                    }
-                </View>
-                <View
-                    style={{
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                        paddingVertical: paddingVertical / 4,
-                        paddingHorizontal: paddingHorizontal,
-                        backgroundColor: '#fff'
-                    }}
-                >
-                    <View>
-                        <Text>
-                            <Icon
-                                name='star-outline'
-                                type='MaterialCommunityIcons'
-                                style={{
-                                    fontSize: 25
-                                }}
-                            />
-                            {
-                                (ratings => {
-                                    let stars = 0;
-                                    ratings.map((rating, i) => {
-                                        stars += rating.stars
-                                    });
+                        <View>
+                            <Text>
+                                <Icon
+                                    name='ios-star-outline'
+                                    style={{
+                                        fontSize: 25
+                                    }}
+                                />
+                                {
+                                    (ratings => {
+                                        let stars = 0;
+                                        ratings.map((rating, i) => {
+                                            stars += rating.stars
+                                        });
 
-                                    return (stars / ratings.length).toFixed(1);
+                                        return (stars / ratings.length).toFixed(1);
 
-                                })(ratings)
-                            }
-                        </Text>
+                                    })(ratings)
+                                }
+                            </Text>
+                        </View>
+                        <View>
+                            <Text>
+                                <Icon
+                                    name='ios-heart-outline'
+                                    style={{
+                                        fontSize: 25
+                                    }}
+                                />
+                                {
+                                    favorites.length
+                                }
+                            </Text>
+                        </View>
+                        <View>
+                            <Text>
+                                <Icon
+                                    name='ios-chatboxes-outline'
+                                    style={{
+                                        fontSize: 25
+                                    }}
+                                />
+                                {
+                                    comments.length
+                                }
+                            </Text>
+                        </View>
                     </View>
                     <View>
                         <Text>
-                            <Icon
-                                name='heart-outline'
-                                type='MaterialCommunityIcons'
-                                style={{
-                                    fontSize: 25
-                                }}
-                            />
                             {
-                                favorites.length
+                                description
                             }
                         </Text>
                     </View>
-                    <View>
-                        <Text>
-                            <Icon
-                                name='message-outline'
-                                type='MaterialCommunityIcons'
-                                style={{
-                                    fontSize: 25
-                                }}
-                            />
-                            {
-                                comments.length
-                            }
-                        </Text>
-                    </View>
-                </View>
-                <View
-                    style={{
-                        paddingTo: paddingVertical / 4,
-                        paddingBottom: paddingVertical,
-                        paddingHorizontal: paddingHorizontal,
-                        backgroundColor: '#fff',
-                    }}
-                >
-                    <Text>
-                        {
-                            description
-                        }
-                    </Text>
                 </View>
             </ScrollView>
         )
@@ -234,8 +220,7 @@ export default class DetailScreen extends Component {
                 <View
                     style={{
                         paddingHorizontal: paddingHorizontal,
-                        paddingTop: paddingVertical,
-                        paddingBottom: paddingVertical / 2,
+                        paddingTop: Platform.OS === 'ios' ? paddingVertical : 0,
                         backgroundColor: '#fff',
                     }}
                 >

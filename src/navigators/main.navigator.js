@@ -9,6 +9,8 @@ import BottomNavigator from './bottom.navigator';
 import RatingScreen from '../screens/rating.screen';
 import FavoriteScreen from '../screens/favorite.screen';
 import CommentScreen from '../screens/comment.screen';
+import DirectionScreen from '../screens/direction.screen';
+import ReservationScreen from '../screens/reservation.screen';
 
 
 // main navigator configs
@@ -19,6 +21,8 @@ const mainNavConfig = {
     Ratings: RatingScreen,
     Favorites: FavoriteScreen,
     Comments: CommentScreen,
+    Direction: DirectionScreen,
+    Reservation: ReservationScreen,
 }
 
 // main route configs

@@ -9,7 +9,7 @@ export default class App extends Component {
 
   componentDidMount() {
     // for debug purpose
-    console.log(`App.js : componentDidMount()`)
+    // console.log(`App.js : componentDidMount()`)
   }
 
   render() {

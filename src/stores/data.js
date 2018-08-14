@@ -34,47 +34,55 @@ export default data = [
                 {
                     stars: 5,
                     user: {
-                        fullName: 'John Does'
+                        fullName: 'John Does',
+                        pictureUri: require('../../assets/peoples/john-does.jpg')
                     }
                 },
                 {
                     stars: 5,
                     user: {
-                        fullName: 'John Smith'
+                        fullName: 'John Smith',
+                        pictureUri: require('../../assets/peoples/arthur-smith.jpg')
                     }
                 },
                 {
                     stars: 4,
                     user: {
-                        fullName: 'Jane Does'
+                        fullName: 'Jane Does',
+                        pictureUri: require('../../assets/peoples/jane-does.jpg')
                     }
                 },
                 {
                     stars: 3,
                     user: {
-                        fullName: 'Joan Smith'
+                        fullName: 'Joan Smith',
+                        pictureUri: require('../../assets/peoples/jesse-does.jpg')
                     }
                 }
             ],
             favorites: [
                 {
                     user: {
-                        fullName: 'John Does'
+                        fullName: 'John Does',
+                        pictureUri: require('../../assets/peoples/john-does.jpg')
                     }
                 },
                 {
                     user: {
-                        fullName: 'John Smith'
+                        fullName: 'John Smith',
+                        pictureUri: require('../../assets/peoples/john-smith.jpg')
                     }
                 },
                 {
                     user: {
-                        fullName: 'Jane Does'
+                        fullName: 'Jane Does',
+                        pictureUri: require('../../assets/peoples/jane-does.jpg')
                     }
                 },
                 {
                     user: {
-                        fullName: 'Joan Smith'
+                        fullName: 'Joan Smith',
+                        pictureUri: require('../../assets/peoples/jesse-does.jpg')
                     }
                 }
             ],
@@ -82,19 +90,22 @@ export default data = [
                 {
                     message: "Awesome place",
                     user: {
-                        fullName: "Jason Smith"
+                        fullName: "Jane Doe",
+                        pictureUri: require('../../assets/peoples/jane-does.jpg')
                     }
                 },
                 {
                     message: "Nice foods, and great service",
                     user: {
-                        fullName: "Arthur Smith"
+                        fullName: "Arthur Smith",
+                        pictureUri: require('../../assets/peoples/arthur-smith.jpg')
                     }
                 },
                 {
                     message: "Great environment, nice foods and great service.",
                     user: {
-                        fullName: "Jason Smith"
+                        fullName: "Jason Smith",
+                        pictureUri: require('../../assets/peoples/jason-smith.jpg')
                     }
                 },
             ]
@@ -135,47 +146,55 @@ export default data = [
                 {
                     stars: 5,
                     user: {
-                        fullName: 'John Does'
+                        fullName: 'John Does',
+                        pictureUri: require('../../assets/peoples/arthur-smith.jpg')
                     }
                 },
                 {
                     stars: 5,
                     user: {
-                        fullName: 'John Smith'
+                        fullName: 'John Smith',
+                        pictureUri: require('../../assets/peoples/john-smith.jpg')
                     }
                 },
                 {
                     stars: 4,
                     user: {
-                        fullName: 'Jane Does'
+                        fullName: 'Jane Does',
+                        pictureUri: require('../../assets/peoples/jane-does.jpg')
                     }
                 },
                 {
                     stars: 3,
                     user: {
-                        fullName: 'Joan Smith'
+                        fullName: 'Joan Smith',
+                        pictureUri: require('../../assets/peoples/jesse-does.jpg')
                     }
                 }
             ],
             favorites: [
                 {
                     user: {
-                        fullName: 'John Does'
+                        fullName: 'John Does',
+                        pictureUri: require('../../assets/peoples/john-does.jpg')
                     }
                 },
                 {
                     user: {
-                        fullName: 'John Smith'
+                        fullName: 'John Smith',
+                        pictureUri: require('../../assets/peoples/john-smith.jpg')
                     }
                 },
                 {
                     user: {
-                        fullName: 'Jane Does'
+                        fullName: 'Jane Does',
+                        pictureUri: require('../../assets/peoples/jane-does.jpg')
                     }
                 },
                 {
                     user: {
-                        fullName: 'Joan Smith'
+                        fullName: 'Joan Smith',
+                        pictureUri: require('../../assets/peoples/jesse-does.jpg')
                     }
                 }
             ],
@@ -183,19 +202,22 @@ export default data = [
                 {
                     message: "Awesome place",
                     user: {
-                        fullName: "Jason Smith"
+                        fullName: "Jane Doe",
+                        pictureUri: require('../../assets/peoples/jane-does.jpg')
                     }
                 },
                 {
                     message: "Nice foods, and great service",
                     user: {
-                        fullName: "Arthur Smith"
+                        fullName: "Arthur Smith",
+                        pictureUri: require('../../assets/peoples/arthur-smith.jpg')
                     }
                 },
                 {
                     message: "Great environment, nice foods and great service.",
                     user: {
-                        fullName: "Jason Smith"
+                        fullName: "Jason Smith",
+                        pictureUri: require('../../assets/peoples/jason-smith.jpg')
                     }
                 },
             ]
@@ -337,47 +359,55 @@ export default data = [
                 {
                     stars: 5,
                     user: {
-                        fullName: 'John Does'
+                        fullName: 'John Does',
+                        pictureUri: require('../../assets/peoples/arthur-smith.jpg')
                     }
                 },
                 {
                     stars: 5,
                     user: {
-                        fullName: 'John Smith'
+                        fullName: 'John Smith',
+                        pictureUri: require('../../assets/peoples/john-smith.jpg')
                     }
                 },
                 {
                     stars: 4,
                     user: {
-                        fullName: 'Jane Does'
+                        fullName: 'Jane Does',
+                        pictureUri: require('../../assets/peoples/jane-does.jpg')
                     }
                 },
                 {
                     stars: 3,
                     user: {
-                        fullName: 'Joan Smith'
+                        fullName: 'Joan Smith',
+                        pictureUri: require('../../assets/peoples/jesse-does.jpg')
                     }
                 }
             ],
             favorites: [
                 {
                     user: {
-                        fullName: 'John Does'
+                        fullName: 'John Does',
+                        pictureUri: require('../../assets/peoples/john-does.jpg')
                     }
                 },
                 {
                     user: {
-                        fullName: 'John Smith'
+                        fullName: 'John Smith',
+                        pictureUri: require('../../assets/peoples/john-smith.jpg')
                     }
                 },
                 {
                     user: {
-                        fullName: 'Jane Does'
+                        fullName: 'Jane Does',
+                        pictureUri: require('../../assets/peoples/jane-does.jpg')
                     }
                 },
                 {
                     user: {
-                        fullName: 'Joan Smith'
+                        fullName: 'Joan Smith',
+                        pictureUri: require('../../assets/peoples/jesse-does.jpg')
                     }
                 }
             ],
@@ -385,19 +415,22 @@ export default data = [
                 {
                     message: "Awesome place",
                     user: {
-                        fullName: "Jason Smith"
+                        fullName: "Jane Doe",
+                        pictureUri: require('../../assets/peoples/jane-does.jpg')
                     }
                 },
                 {
                     message: "Nice foods, and great service",
                     user: {
-                        fullName: "Arthur Smith"
+                        fullName: "Arthur Smith",
+                        pictureUri: require('../../assets/peoples/arthur-smith.jpg')
                     }
                 },
                 {
                     message: "Great environment, nice foods and great service.",
                     user: {
-                        fullName: "Jason Smith"
+                        fullName: "Jason Smith",
+                        pictureUri: require('../../assets/peoples/jason-smith.jpg')
                     }
                 },
             ]
@@ -438,47 +471,55 @@ export default data = [
                 {
                     stars: 5,
                     user: {
-                        fullName: 'John Does'
+                        fullName: 'John Does',
+                        pictureUri: require('../../assets/peoples/john-does.jpg')
                     }
                 },
                 {
                     stars: 5,
                     user: {
-                        fullName: 'John Smith'
+                        fullName: 'John Smith',
+                        pictureUri: require('../../assets/peoples/john-smith.jpg')
                     }
                 },
                 {
                     stars: 4,
                     user: {
-                        fullName: 'Jane Does'
+                        fullName: 'Jane Does',
+                        pictureUri: require('../../assets/peoples/jane-does.jpg')
                     }
                 },
                 {
                     stars: 3,
                     user: {
-                        fullName: 'Joan Smith'
+                        fullName: 'Joan Smith',
+                        pictureUri: require('../../assets/peoples/jesse-does.jpg')
                     }
                 }
             ],
             favorites: [
                 {
                     user: {
-                        fullName: 'John Does'
+                        fullName: 'John Does',
+                        pictureUri: require('../../assets/peoples/john-does.jpg')
                     }
                 },
                 {
                     user: {
-                        fullName: 'John Smith'
+                        fullName: 'John Smith',
+                        pictureUri: require('../../assets/peoples/john-smith.jpg')
                     }
                 },
                 {
                     user: {
-                        fullName: 'Jane Does'
+                        fullName: 'Jane Does',
+                        pictureUri: require('../../assets/peoples/jane-does.jpg')
                     }
                 },
                 {
                     user: {
-                        fullName: 'Joan Smith'
+                        fullName: 'Joan Smith',
+                        pictureUri: require('../../assets/peoples/jesse-does.jpg')
                     }
                 }
             ],
@@ -486,19 +527,22 @@ export default data = [
                 {
                     message: "Awesome place",
                     user: {
-                        fullName: "Jason Smith"
+                        fullName: "Jane Doe",
+                        pictureUri: require('../../assets/peoples/jane-does.jpg')
                     }
                 },
                 {
                     message: "Nice foods, and great service",
                     user: {
-                        fullName: "Arthur Smith"
+                        fullName: "Arthur Smith",
+                        pictureUri: require('../../assets/peoples/arthur-smith.jpg')
                     }
                 },
                 {
                     message: "Great environment, nice foods and great service.",
                     user: {
-                        fullName: "Jason Smith"
+                        fullName: "Jason Smith",
+                        pictureUri: require('../../assets/peoples/jason-smith.jpg')
                     }
                 },
             ]
@@ -539,25 +583,29 @@ export default data = [
                 {
                     stars: 5,
                     user: {
-                        fullName: 'John Does'
+                        fullName: 'John Does',
+                        pictureUri: require('../../assets/peoples/john-does.jpg')
                     }
                 },
                 {
                     stars: 5,
                     user: {
-                        fullName: 'John Smith'
+                        fullName: 'John Smith',
+                        pictureUri: require('../../assets/peoples/arthur-smith.jpg')
                     }
                 },
                 {
                     stars: 4,
                     user: {
-                        fullName: 'Jane Does'
+                        fullName: 'Jane Does',
+                        pictureUri: require('../../assets/peoples/jane-does.jpg')
                     }
                 },
                 {
                     stars: 3,
                     user: {
-                        fullName: 'Joan Smith'
+                        fullName: 'Joan Smith',
+                        pictureUri: require('../../assets/peoples/jesse-does.jpg')
                     }
                 }
             ],
@@ -566,19 +614,22 @@ export default data = [
                 {
                     message: "Awesome place",
                     user: {
-                        fullName: "Jason Smith"
+                        fullName: "Jane Doe",
+                        pictureUri: require('../../assets/peoples/jane-does.jpg')
                     }
                 },
                 {
                     message: "Nice foods, and great service",
                     user: {
-                        fullName: "Arthur Smith"
+                        fullName: "Arthur Smith",
+                        pictureUri: require('../../assets/peoples/arthur-smith.jpg')
                     }
                 },
                 {
                     message: "Great environment, nice foods and great service.",
                     user: {
-                        fullName: "Jason Smith"
+                        fullName: "Jason Smith",
+                        pictureUri: require('../../assets/peoples/jason-smith.jpg')
                     }
                 },
             ]
