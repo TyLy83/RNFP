@@ -190,7 +190,7 @@ export default class MainScreen extends Component {
 
     render() {
 
-        const { navigatorStore, databaseStore } = this.props;
+        const { databaseStore } = this.props;
         const { paddingHorizontal, paddingVertical } = variables.globalVariables;
         const list = databaseStore.list;
 
