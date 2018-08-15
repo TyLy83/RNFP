@@ -15,6 +15,10 @@
         android:icon="@mipmap/ic_launcher"
         android:theme="@style/AppTheme">
 
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCcoCNw7etF7x1MtRakDlqzo_C7d49OAns"/>
+
         <activity
             android:name=".SplashActivity"
             android:theme="@style/SplashTheme"
@@ -34,24 +38,4 @@
             />
         <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
     </application>
-
-    <!--<application-->
-      <!--android:name=".MainApplication"-->
-      <!--android:label="@string/app_name"-->
-      <!--android:icon="@mipmap/ic_launcher"-->
-      <!--android:allowBackup="true"-->
-      <!--android:theme="@style/AppTheme">-->
-      <!--<activity-->
-        <!--android:name=".MainActivity"-->
-        <!--android:label="@string/app_name"-->
-        <!--android:configChanges="keyboard|keyboardHidden|orientation|screenSize"-->
-        <!--android:windowSoftInputMode="adjustResize">-->
-        <!--<intent-filter>-->
-            <!--<action android:name="android.intent.action.MAIN" />-->
-            <!--<category android:name="android.intent.category.LAUNCHER" />-->
-        <!--</intent-filter>-->
-      <!--</activity>-->
-      <!--<activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />-->
-    <!--</application>-->
-
 </manifest>
