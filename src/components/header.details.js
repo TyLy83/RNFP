@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { Platform, View, Text } from 'react-native';
 import { Button, Icon } from 'native-base';
 import { observer, inject } from 'mobx-react/native';
 import variables from '../variables/index.variables';
+
+const { globalStyles, globalVariables } = variables;
+const { iconStyle } = globalStyles;
+const { paddingHorizontal } = globalVariables;
+
 
 @inject('navigatorStore')
 @observer
 export default class HeaderDetails extends Component {
 
-    render() {
+    renderContent() {
 
         const { navigatorStore, item, title, previous, backgroundColor } = this.props;
-        const { iconStyle } = variables.styles;
 
         return (
             <View
@@ -55,6 +59,22 @@ export default class HeaderDetails extends Component {
                         />
                     </Button>
                 </View>
+            </View>
+        )
+    }
+
+    render() {
+        const { backgroundColor } = this.props;
+        return (
+            <View
+                style={{
+                    paddingHorizontal: paddingHorizontal,
+                    backgroundColor: { backgroundColor },
+                }}
+            >
+                {
+                    this.renderContent()
+                }
             </View>
         )
     }

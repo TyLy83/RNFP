@@ -17,6 +17,10 @@ import variables from '../variables/index.variables';
 import HeaderDetails from '../components/header.details';
 import FooterDetails from '../components/footer.details';
 
+const { globalVariables, globalStyles } = variables;
+const { paddingHorizontal, paddingVertical } = globalVariables;
+const { width } = Dimensions.get('window');
+
 
 @inject('databaseStore')
 @inject('navigatorStore')
@@ -25,20 +29,12 @@ export default class DetailScreen extends Component {
 
     constructor(props) {
         super(props);
-        // console.log(`main.screen.js constructor()`);
-    }
-
-    state = {
-        isImageBoxOpened: false,
-    };
-
-    componentDidMount() {
-        // debug purpose
-        // console.log(`main.screen.js componentDidMount()::`);
+        this.state = {
+            isImageBoxOpened: false,
+        };
     }
 
     toggledImages(images) {
-        const { paddingHorizontal, paddingVertical } = variables.globalVariables;
 
         return (
             <Modal
@@ -66,7 +62,7 @@ export default class DetailScreen extends Component {
                         >
                             <Icon
                                 name='ios-close'
-                                style={{color:'#000'}}
+                                style={{ color: '#000' }}
                             />
                         </Button>
                     </View>
@@ -105,7 +101,6 @@ export default class DetailScreen extends Component {
 
     renderContent(item) {
 
-        const { paddingHorizontal, paddingVertical } = variables.globalVariables;
         const { id, restaurant } = item;
         const { description, images, ratings, favorites, comments } = restaurant;
 
@@ -207,33 +202,23 @@ export default class DetailScreen extends Component {
 
     render() {
 
-        const { paddingHorizontal, paddingVertical } = variables.globalVariables;
         const { params } = this.props.navigation.state;
         const item = params ? params.item : null;
         const { restaurant } = item;
-        const width = Dimensions.get('window').width;
 
         return (
             <ContainerComponent
                 coverColor='#fff'
             >
-                <View
-                    style={{
-                        paddingHorizontal: paddingHorizontal,
-                        paddingTop: Platform.OS === 'ios' ? paddingVertical : 0,
-                        backgroundColor: '#fff',
-                    }}
-                >
-                    <HeaderDetails
-                        item={item}
-                        title={restaurant.name}
-                        previous='Main'
-                    />
-                </View>
+                <HeaderDetails
+                    item={item}
+                    title={restaurant.name}
+                    previous='Main'
+                    backgroundColor="#fff"
+                />
                 <View
                     style={{
                         flex: 1,
-                        // paddingHorizontal: paddingHorizontal,
                         paddingVertical: paddingVertical / 2,
                         backgroundColor: '#f9f9f9',
                     }}
@@ -243,18 +228,15 @@ export default class DetailScreen extends Component {
                     }
                 </View>
                 <View
-                    style={{
-                        position: 'absolute',
-                        bottom: 0,
-                        paddingHorizontal: paddingHorizontal,
-                        paddingVertical: paddingVertical / 2,
-                        width: width,
-                        backgroundColor: '#fff',
-                    }}
+                    style={[ { width: width,  backgroundColor: '#fff'} ]}
                 >
-                    <FooterDetails item={item} />
+                    <FooterDetails
+                        item={item}
+                        backgroundColor='#fff'
+                    />
                 </View>
             </ContainerComponent>
         )
     }
 }
+

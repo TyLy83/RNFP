@@ -7,6 +7,9 @@ import variables from '../variables/index.variables';
 import HeaderDetails from '../components/header.details';
 import FooterDetails from '../components/footer.details';
 
+const { width } = Dimensions.get('window');
+const { globalVariables } = variables;
+const { paddingHorizontal, paddingVertical } = globalVariables;
 
 @inject('databaseStore')
 @inject('navigatorStore')
@@ -14,31 +17,21 @@ import FooterDetails from '../components/footer.details';
 export default class CommentScreen extends Component {
 
     render() {
-
-        const { paddingHorizontal, paddingVertical } = variables.globalVariables;
+        
         const { params } = this.props.navigation.state;
         const { item } = params;
         const { restaurant } = item;
         const { comments } = restaurant;
-        const width = Dimensions.get('window').width;
 
         return (
             <ContainerComponent
                 coverColor='#fff'
             >
-                <View
-                    style={{
-                        paddingHorizontal: paddingHorizontal,
-                        paddingTop: Platform.OS === 'ios' ? paddingVertical : 0,
-                        backgroundColor: '#fff',
-                    }}
-                >
-                    <HeaderDetails
-                        item={item}
-                        title={restaurant.name}
-                        previous='Details'
-                    />
-                </View>
+                <HeaderDetails
+                    item={item}
+                    title={restaurant.name}
+                    previous='Details'
+                />
                 <View
                     style={{
                         flex: 4,
@@ -102,18 +95,12 @@ export default class CommentScreen extends Component {
                     </ScrollView>
                 </View>
                 <View
-                    style={{
-                        position: 'absolute',
-                        bottom: 0,
-                        paddingHorizontal: paddingHorizontal,
-                        paddingVertical: paddingVertical / 2,
-                        width: width,
-                        backgroundColor: '#fff',
-                    }}
+                    style={[{ width: width, backgroundColor: '#fff' }]}
                 >
                     <FooterDetails
                         title='Comments'
                         item={item}
+                        backgroundColor='#fff'
                     />
                 </View>
             </ContainerComponent>

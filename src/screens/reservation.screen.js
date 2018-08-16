@@ -26,19 +26,11 @@ export default class ReservationScreen extends Component {
             <ContainerComponent
                 coverColor='#fff'
             >
-                <View
-                    style={{
-                        paddingHorizontal: paddingHorizontal,
-                        paddingTop: Platform.OS === 'ios' ? paddingVertical : 0,
-                        backgroundColor: '#fff',
-                    }}
-                >
-                    <HeaderDetails
-                        title='Reservation'
-                        item={item}
-                        previous='Details'
-                    />
-                </View>
+                <HeaderDetails
+                    title='Reservation'
+                    item={item}
+                    previous='Details'
+                />
                 <View
                     style={{
                         flex: 1,
@@ -69,14 +61,7 @@ export default class ReservationScreen extends Component {
                     </ScrollView>
                 </View>
                 <View
-                    style={{
-                        position: 'absolute',
-                        bottom: 0,
-                        paddingHorizontal: paddingHorizontal,
-                        paddingVertical: paddingVertical / 2,
-                        width: width,
-                        backgroundColor: '#fff',
-                    }}
+                    style={[{ width: width, backgroundColor: '#fff' }]}
                 >
                     <FooterDetails
                         title='Reservation'

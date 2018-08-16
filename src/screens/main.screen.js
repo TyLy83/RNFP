@@ -11,8 +11,9 @@ import {
 import { observer, inject } from 'mobx-react/native';
 import ContainerComponent from '../components/container.component';
 import variables from '../variables/index.variables';
-//import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Button, Icon } from 'native-base';
+
+const { paddingHorizontal, paddingVertical } = variables.globalVariables;
 
 @inject('navigatorStore')
 @inject('databaseStore')
@@ -65,7 +66,6 @@ export default class MainScreen extends Component {
 
     displayList(list) {
 
-        const { paddingHorizontal, paddingVertical } = variables.globalVariables;
         const { navigatorStore } = this.props;
     
         return (
@@ -191,20 +191,13 @@ export default class MainScreen extends Component {
     render() {
 
         const { databaseStore } = this.props;
-        const { paddingHorizontal, paddingVertical } = variables.globalVariables;
         const list = databaseStore.list;
 
         return (
             <ContainerComponent
                 coverColor='#fff'
             >
-                <View
-                    style={{
-                        paddingHorizontal: paddingHorizontal,
-                        paddingTop: Platform.OS === 'ios' ? paddingVertical : 0,
-                        backgroundColor: '#fff'
-                    }}
-                >
+                <View>
                     {
                         this.renderHeader()
                     }

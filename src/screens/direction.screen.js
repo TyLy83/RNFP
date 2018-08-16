@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
-import { Platform, Dimensions, ScrollView, View, Text, Image } from 'react-native';
-import { Button, Icon } from 'native-base';
+import { Platform, Dimensions, StyleSheet, ScrollView, View, Text, Image } from 'react-native';
+import { Button, Icon, StyleProvider } from 'native-base';
 import { observer, inject } from 'mobx-react/native';
 import MapView, { Marker, ProviderPropType, PROVIDER_GOOGLE } from 'react-native-maps';
 import ContainerComponent from '../components/container.component';
 import variables from '../variables/index.variables';
 import HeaderDetails from '../components/header.details';
 import FooterDetails from '../components/footer.details';
+// import styles from '../variables/style.variables';
 
 
 const { width, height } = Dimensions.get('window');
+const { paddingVertical, paddingHorizontal } = variables.globalVariables;
 
-const ASPECT_RATIO = width / height;
-const LATITUDE = 37.78825;
-const LONGITUDE = -122.4324;
-const LATITUDE_DELTA = 0.0922;
+const ASPECT_RATIO = width / (height - 160);
+const LATITUDE_DELTA = 0.009;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
+const SPACE = 0.01;
 
 @inject('databaseStore')
 @inject('navigatorStore')
@@ -24,102 +25,81 @@ export default class DirectionScreen extends Component {
 
     constructor(props) {
         super(props);
+    }
 
-        this.state = {
-            region: {
-                latitude: LATITUDE,
-                longitude: LONGITUDE,
-                latitudeDelta: LATITUDE_DELTA,
-                longitudeDelta: LONGITUDE_DELTA,
-            },
-        };
+    regionFrom(lat, lon, distance) {
+        distance = distance / 2
+        const circumference = 40075
+        const oneDegreeOfLatitudeInMeters = 111.32 * 1000
+        const angularDistance = distance / circumference
+
+        const latitudeDelta = distance / oneDegreeOfLatitudeInMeters
+        const longitudeDelta = Math.abs(Math.atan2(
+            Math.sin(angularDistance) * Math.cos(lat),
+            Math.cos(angularDistance) - Math.sin(lat) * Math.sin(lat)))
+
+        return result = {
+            latitude: lat,
+            longitude: lon,
+            latitudeDelta,
+            longitudeDelta,
+        }
     }
 
     render() {
 
-        const { paddingHorizontal, paddingVertical } = variables.globalVariables;
         const { params } = this.props.navigation.state;
         const item = params ? params.item : null;
         const { restaurant } = item;
-        const { ratings } = restaurant;
-        const width = Dimensions.get('window').width;
 
         return (
             <ContainerComponent
                 coverColor='#fff'
             >
+                <HeaderDetails
+                    title='Direction'
+                    item={item}
+                    previous='Details'
+                />
                 <View
-                    style={{
-                        paddingHorizontal: paddingHorizontal,
-                        paddingTop: Platform.OS === 'ios' ? paddingVertical : 0,
-                        backgroundColor: '#fff',
-                    }}
+                    style={styles.mapWrapper}
                 >
-                    <HeaderDetails
-                        title='Direction'
-                        item={item}
-                        previous='Details'
-                    />
-                </View>
-                <View
-                    style={{
-                        flex: 1,
-                        backgroundColor: '#f9f9f9',
-                    }}
-                >
-                    <ScrollView
-                        showsHorizontalScrollIndicator={false}
-                        showsVerticalScrollIndicator={false}
+                    <View
+                        style={styles.addressStyle}
                     >
-                        <View
-                            style={{
-                                paddingBottom: paddingVertical * 2
+                        <Text>500 Queen Street, Auckland 1010, New Zealand</Text>
+                    </View>
+                    <MapView
+                        style={styles.map}
+                        initialRegion={{
+                            latitude: -36.8567804,
+                            longitude: 174.7622526,
+                            latitudeDelta: LATITUDE_DELTA,
+                            longitudeDelta: LONGITUDE_DELTA,
+                        }}
+                    >
+                        <MapView.Marker
+                            coordinate={{
+                                latitude: -36.8567804,
+                                longitude: 174.7622526,
                             }}
-                        >
-                            <View
-                                style={{
-                                    marginVertical: paddingHorizontal,
-                                    marginHorizontal: paddingHorizontal,
-                                    paddingVertical: paddingHorizontal,
-                                    paddingHorizontal: paddingHorizontal,
-                                    backgroundColor: '#fff'
-                                }}
-                            >
-                                <Text>Map</Text>
-                            </View>
-                            <View>
-                                <MapView
-                                    provider={PROVIDER_GOOGLE}
-                                    style={{
-                                        width: '100%',
-                                        height: '100%'
-                                    }}
-                                    initialRegion={{
-                                        latitude: 39.7392,
-                                        longitude: -104.9903,
-                                        latitudeDelta: 0.0922,
-                                        longitudeDelta: 0.0421,
-                                    }}
-                                >
-
-                                </MapView>
-                            </View>
-                        </View>
-                    </ScrollView>
+                            title={restaurant.name}
+                            description="500 Queen Street, Auckland 1010, New Zealand"
+                        />
+                    </MapView>
                 </View>
                 <View
-                    style={{
+                    style={[{
                         position: 'absolute',
                         bottom: 0,
-                        paddingHorizontal: paddingHorizontal,
-                        paddingVertical: paddingVertical / 2,
                         width: width,
-                        backgroundColor: '#fff',
-                    }}
+                        backgroundColor: '#fff'
+                    }
+                    ]}
                 >
                     <FooterDetails
-                        title='Direction'
                         item={item}
+                        backgroundColor='#fff'
                     />
                 </View>
             </ContainerComponent>
@@ -127,3 +107,28 @@ export default class DirectionScreen extends Component {
     }
 }
 
+const styles = StyleSheet.create({
+    mapWrapper: {
+        position: 'relative',
+        paddingHorizontal: paddingHorizontal,
+        height: height - 156,
+    },
+    map: {
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        height: height - 156,
+        width: width,
+        backgroundColor: 'red',
+    },
+    addressStyle: {
+        position: 'absolute',
+        top: paddingHorizontal,
+        left: paddingHorizontal,
+        width: width - paddingHorizontal * 2,
+        backgroundColor: '#fff',
+        paddingHorizontal: paddingHorizontal,
+        paddingVertical: paddingHorizontal,
+        zIndex: 1
+    }
+})

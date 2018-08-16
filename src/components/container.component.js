@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+    Platform,
     StyleSheet,
     View,
     StatusBar,
@@ -12,13 +13,19 @@ export default class ContainerComponent extends Component {
         return (
             <View
                 style={[
-                    styles.container
+                    styles.container,
+                    {
+                        backgroundColor: this.props.coverColor
+                    }
                 ]}
             >
                 <ImageBackground
                     source={this.props.imageUrl}
                     style={[
-                        styles.container,
+                        styles.imageBackground,
+                        {
+                            backgroundColor: this.props.coverColor
+                        }
                     ]}
                 >
                     <View
@@ -26,17 +33,21 @@ export default class ContainerComponent extends Component {
                             styles.container,
                             {
                                 backgroundColor: this.props.coverColor,
-                                paddingHorizontal: this.props.paddingHorizontal,
-                                paddingVertical: this.props.paddingVertical,
                             }
                         ]}
                     >
+                        <StatusBar
+                            backgroundColor={this.props.coverColor}
+                            hidden={this.starBarHidden ? true : false}
+                        />
                         <SafeAreaView
-                            style={
-                                styles.container
-                            }
+                            style={[styles.container]}
                         >
-                            {this.props.children}
+                            <View
+                                style={[styles.contentWrapper]}
+                            >
+                                {this.props.children}
+                            </View>
                         </SafeAreaView>
                     </View>
                 </ImageBackground>
@@ -55,8 +66,9 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%'
     },
-    contentWrap: {
+    contentWrapper: {
         flex: 1,
+        paddingTop: Platform.OS == 'ios'? 32 : 0,
     },
 });
 

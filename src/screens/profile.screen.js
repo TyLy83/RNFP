@@ -14,7 +14,7 @@ export default class ProfileScreen extends Component {
     render() {
         const { navigatorStore, authenticatorStore } = this.props;
         const { paddingHorizontal, paddingVertical } = variables.globalVariables;
-        const { iconStyle } = variables.styles;
+        const { iconStyle } = variables.globalStyles;
 
         return (
             <ContainerComponent
@@ -61,132 +61,132 @@ export default class ProfileScreen extends Component {
                             </Button>
                         </View>
                     </View>
-                        <View>
-                            <View
-                                style={{
-                                    justifyContent: 'center',
-                                    alignItems: 'center'
-                                }}
-                            >
-                                <View
-                                    style={{
-                                        paddingVertical: paddingHorizontal
-                                    }}
-                                >
-                                    <Image
-                                        source={require('../../assets/peoples/john-does.jpg')}
-                                        style={{
-                                            height: 180,
-                                            width: 180,
-                                            borderRadius: 90
-                                        }}
-                                    />
-                                </View>
-                                <Text
-                                    style={{
-                                        paddingVertical: paddingHorizontal / 2,
-                                        fontSize: 25,
-                                        fontWeight: '600'
-                                    }}
-                                >
-                                    {authenticatorStore.user.email}
-                                </Text>
-                            </View>
-                        </View>
+                    <View>
                         <View
                             style={{
-                                paddingVertical: paddingHorizontal / 2,
-                                paddingHorizontal: paddingHorizontal
+                                justifyContent: 'center',
+                                alignItems: 'center'
                             }}
                         >
                             <View
-                                style={[
-                                    styles.listItem,
-                                    {
-                                        paddingHorizontal: paddingHorizontal
-                                    }
-                                ]}
-                            >
-                                <Text>Reservations</Text>
-                                <Button
-                                    transparent
-                                >
-                                    <Icon
-                                        name='ios-calendar-outline'
-                                        style={{ color: '#000' }}
-                                    />
-                                </Button>
-                            </View>
-                            <View
-                                style={[
-                                    styles.listItem,
-                                    {
-                                        paddingHorizontal: paddingHorizontal
-                                    }
-                                ]}
-                            >
-                                <Text>Notifcations</Text>
-                                <Button
-                                    transparent
-                                >
-                                    <Icon
-                                        name='ios-notifications-outline'
-                                        style={{ color: '#000' }}
-                                    />
-                                </Button>
-                            </View>
-                            <View
-                                style={[
-                                    styles.listItem,
-                                    {
-                                        paddingHorizontal: paddingHorizontal
-                                    }
-                                ]}
-                            >
-                                <Text>Settings</Text>
-                                <Button
-                                    transparent
-                                >
-                                    <Icon
-                                        name='ios-settings-outline'
-                                        style={{ color: '#000' }}
-                                    />
-                                </Button>
-                            </View>
-                            <View
                                 style={{
-                                    marginVertical: 10,
-                                    backgroundColor: '#fff'
+                                    paddingVertical: paddingHorizontal
                                 }}
                             >
-                                <Button
-                                    transparent
-                                    full
-                                    onPress={() => {
-                                        authenticatorStore.signOut()
+                                <Image
+                                    source={require('../../assets/peoples/john-does.jpg')}
+                                    style={{
+                                        height: 180,
+                                        width: 180,
+                                        borderRadius: 90
                                     }}
-                                >
-                                    <Icon
-                                        name='ios-power-outline'
-                                        style={{ color: '#000' }}
-                                    />
-                                    <Text>Logout</Text>
-                                </Button>
+                                />
                             </View>
+                            <Text
+                                style={{
+                                    paddingVertical: paddingHorizontal / 2,
+                                    fontSize: 25,
+                                    fontWeight: '600'
+                                }}
+                            >
+                                {authenticatorStore.user.email}
+                            </Text>
                         </View>
                     </View>
+                    <View
+                        style={{
+                            paddingVertical: paddingHorizontal / 2,
+                            paddingHorizontal: paddingHorizontal
+                        }}
+                    >
+                        <View
+                            style={[
+                                styles.listItem,
+                                {
+                                    paddingHorizontal: paddingHorizontal
+                                }
+                            ]}
+                        >
+                            <Text>Reservations</Text>
+                            <Button
+                                transparent
+                            >
+                                <Icon
+                                    name='ios-calendar-outline'
+                                    style={{ color: '#000' }}
+                                />
+                            </Button>
+                        </View>
+                        <View
+                            style={[
+                                styles.listItem,
+                                {
+                                    paddingHorizontal: paddingHorizontal
+                                }
+                            ]}
+                        >
+                            <Text>Notifcations</Text>
+                            <Button
+                                transparent
+                            >
+                                <Icon
+                                    name='ios-notifications-outline'
+                                    style={{ color: '#000' }}
+                                />
+                            </Button>
+                        </View>
+                        <View
+                            style={[
+                                styles.listItem,
+                                {
+                                    paddingHorizontal: paddingHorizontal
+                                }
+                            ]}
+                        >
+                            <Text>Settings</Text>
+                            <Button
+                                transparent
+                            >
+                                <Icon
+                                    name='ios-settings-outline'
+                                    style={{ color: '#000' }}
+                                />
+                            </Button>
+                        </View>
+                        <View
+                            style={{
+                                marginVertical: 10,
+                                backgroundColor: '#fff'
+                            }}
+                        >
+                            <Button
+                                transparent
+                                full
+                                onPress={() => {
+                                    authenticatorStore.signOut()
+                                }}
+                            >
+                                <Icon
+                                    name='ios-power-outline'
+                                    style={{ color: '#000' }}
+                                />
+                                <Text>Logout</Text>
+                            </Button>
+                        </View>
+                    </View>
+                </View>
             </ContainerComponent>
-                )
-            }
-        }
-        
-const styles =StyleSheet.create({
-                    listItem: {
-                    marginVertical: 5,
-                backgroundColor: '#fff',
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                borderRadius: 3,
-            }
+        )
+    }
+}
+
+const styles = StyleSheet.create({
+    listItem: {
+        marginVertical: 5,
+        backgroundColor: '#fff',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        borderRadius: 3,
+    }
 })

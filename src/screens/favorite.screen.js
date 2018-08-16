@@ -25,19 +25,11 @@ export default class FavoriteScreen extends Component {
             <ContainerComponent
                 coverColor='#fff'
             >
-                <View
-                    style={{
-                        paddingHorizontal: paddingHorizontal,
-                        paddingTop: Platform.OS === 'ios' ? paddingVertical : 0,
-                        backgroundColor: '#fff',
-                    }}
-                >
-                    <HeaderDetails
-                        item={item}
-                        title={item.restaurant.name}
-                        previous='Details'
-                    />
-                </View>
+                <HeaderDetails
+                    item={item}
+                    title={item.restaurant.name}
+                    previous='Details'
+                />
                 <View
                     style={{
                         flex: 4,
@@ -105,14 +97,7 @@ export default class FavoriteScreen extends Component {
                     </ScrollView>
                 </View>
                 <View
-                    style={{
-                        position: 'absolute',
-                        bottom: 0,
-                        paddingHorizontal: paddingHorizontal,
-                        paddingVertical: paddingVertical / 2,
-                        width: width,
-                        backgroundColor: '#fff',
-                    }}
+                    style={[{ width: width, backgroundColor: '#fff' }]}
                 >
                     <FooterDetails
                         title='Favorites'
