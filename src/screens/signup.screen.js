@@ -7,21 +7,30 @@ import {
 } from 'react-native';
 import BgimageComponent from '../components/bgimage.component';
 import { Item, Input, Icon, Button, Text, H3 } from 'native-base';
+import { observer, inject } from 'mobx-react/native';
 
 
+@inject('authenticatorStore')
+@inject('navigatorStore')
+@observer
 export default class SignupScreen extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { focus: false }
+    // this.state = { focus: false }
+    console.log('in sign up screen')
   }
 
   componentDidMount() {
-    //debug purpose
-    console.log(`signup.screen.js ::: componentDidMount()`);
+    // debug purpose
+    // console.log(`signup.screen.js ::: componentDidMount()`);
   }
 
   render() {
+
+    const { authenticatorStore } = this.props;
+    const { user } = authenticatorStore;
+
     return (
       <BgimageComponent
         imageUrl={require('../../assets/bg_images/bg_image_1.jpg')}
@@ -53,6 +62,7 @@ export default class SignupScreen extends Component {
                 onSubmitEditing={() => { this.PasswordInputRef._root.focus() }}
                 style={{ color: '#fff' }}
                 tintColor="#fff"
+                onChangeText={(email) => user.email = email}
               />
             </Item>
             <Item rounded style={styles.formInput}>
@@ -66,9 +76,14 @@ export default class SignupScreen extends Component {
                 autoCapitalize="none"
                 secureTextEntry={true}
                 style={{ color: '#fff' }}
+                onChangeText={(pass) => user.password = pass}
               />
             </Item>
-            <Button full style={styles.buttonStyle}>
+            <Button
+              full
+              style={styles.buttonStyle}
+              onPress={() => this.props.authenticatorStore.signUp()}
+            >
               <Text style={styles.buttonText}>SIGN UP</Text>
             </Button>
           </View>
@@ -79,7 +94,7 @@ export default class SignupScreen extends Component {
               <Text style={{ color: '#fff', paddingVertical: 10 }}>Become a member</Text>
               <Text
                 style={{ color: '#fff', fontWeight: '900' }}
-                onPress={() => this.props.navigation.navigate('Login')}
+                onPress={() => this.props.navigatorStore.navigate('Login')}
               >Sign In</Text>
             </View>
             <View style={{
@@ -91,11 +106,9 @@ export default class SignupScreen extends Component {
             }}>
               <Text style={{ color: '#fff', paddingVertical: 10 }}>Connect to social app</Text>
               <View style={{ flex: 1, flexDirection: 'row', }}>
-                {/* facebook login button */}
                 <Text onPress={() => alert('facebook')}>
                   <Icon name='facebook-square' type='FontAwesome' style={{ color: '#fff' }} />
                 </Text>
-                {/* google login button */}
                 <Text style={{ paddingHorizontal: 10 }} onPress={() => alert('google')}>
                   <Icon name='google-plus-square' type='FontAwesome' style={{ color: '#fff' }} />
                 </Text>

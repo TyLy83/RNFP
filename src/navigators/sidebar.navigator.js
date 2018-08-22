@@ -15,6 +15,7 @@ const contentComponent = (props) => {
     const params = navigation.state.routes[0].params;
     const { authenticatorStore, navigatorStore } = stores;
     const { paddingHorizontal, paddingVertical } = variables.globalVariables;
+    const { user } = authenticatorStore;
 
     return (
 
@@ -36,7 +37,7 @@ const contentComponent = (props) => {
                 >
                     <Button
                         transparent
-                        onPress={()=>navigatorStore.closeDrawer()}
+                        onPress={() => navigatorStore.closeDrawer()}
                     >
                         <Icon
                             name='close'
@@ -48,21 +49,18 @@ const contentComponent = (props) => {
                     </Button>
                 </View>
                 <View
-                    style={{
-                        width: width,
-                        height: 150,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                    }}
+                    style={styles.top}
                 >
-                    <Text>{params.user.email}</Text>
+                    <Text>{user.email}</Text>
                 </View>
                 <View>
-                    <DrawerItems {...props} />
+                    <DrawerItems
+                        {...props}
+                    />
                 </View>
                 <View
                     style={{
-                       marginVertical: paddingHorizontal
+                        marginVertical: paddingHorizontal
                     }}
                 >
                     <Button
@@ -74,7 +72,7 @@ const contentComponent = (props) => {
                             name='power'
                             style={{
                                 color: '#000',
-                               
+
                             }}
                         />
                         <Text
@@ -98,7 +96,6 @@ const sidebarNavigator = createDrawerNavigator(
                 drawerIcon: ({ tintColor }) => (
                     <Icon
                         name='home'
-                        // type='MaterialCommunityIcons'
                         style={{ color: tintColor, fontSize: 20 }}
                     />
                 ),
@@ -118,7 +115,6 @@ const sidebarNavigator = createDrawerNavigator(
         },
     },
     {
-        //drawerPosition: 'left',
         contentComponent: contentComponent,
         drawerWidth: width
     }
@@ -128,6 +124,12 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
+    top: {
+        width: width,
+        height: 150,
+        justifyContent: 'center',
+        alignItems: 'center',
+    }
 });
 
 export default sidebarNavigator;

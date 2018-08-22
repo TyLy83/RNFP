@@ -1,4 +1,6 @@
 apply plugin: "com.android.application"
+apply plugin: "com.google.firebase.firebase-perf"
+apply plugin: 'io.fabric'
 
 import com.android.build.OutputFile
 
@@ -94,6 +96,17 @@ def enableSeparateBuildPerCPUArchitecture = false
 def enableProguardInReleaseBuilds = false
 
 android {
+
+    lintOptions {
+        disable 'GradleCompatible'
+        disable 'InvalidPackage'
+    }
+
+    // because of firestore:
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
     compileSdkVersion 27
     //buildToolsVersion "23.0.1"
 
@@ -107,6 +120,7 @@ android {
             abiFilters "armeabi-v7a", "x86"
         }
 
+        // because of firestore:
         multiDexEnabled true
     }
     splits {
@@ -139,10 +153,33 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-firebase')
     implementation project(':react-native-vector-icons')
     implementation project(':react-native-splash-screen')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:27.1.1"
+
+    implementation('com.crashlytics.sdk.android:crashlytics:2.9.3@aar') {
+        transitive = true
+    }
+
+    // RNFirebase required dependencies
+    implementation "com.google.firebase:firebase-core:16.0.1"
+    implementation "com.google.android.gms:play-services-base:15.0.1"
+
+    // RNFirebase optional dependencies
+    implementation "com.google.firebase:firebase-ads:15.0.1"
+    implementation "com.google.firebase:firebase-auth:16.0.2"
+    implementation "com.google.firebase:firebase-config:16.0.0"
+    implementation "com.google.firebase:firebase-crash:16.0.1"
+    implementation "com.google.firebase:firebase-database:16.0.1"
+    implementation "com.google.firebase:firebase-firestore:17.0.2"
+    implementation "com.google.firebase:firebase-functions:16.0.1"
+    implementation "com.google.firebase:firebase-invites:16.0.1"
+    implementation "com.google.firebase:firebase-storage:16.0.1"
+    implementation "com.google.firebase:firebase-messaging:17.1.0"
+    implementation "com.google.firebase:firebase-perf:16.0.0"
+
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
     implementation(project(':react-native-maps')) {
@@ -150,8 +187,11 @@ dependencies {
         exclude group: 'com.google.android.gms', module: 'play-services-maps'
     }
 
-    implementation 'com.google.android.gms:play-services-base:11.8.0'
-    implementation 'com.google.android.gms:play-services-maps:11.8.0'
+//    implementation 'com.google.android.gms:play-services-base:11.8.0'
+//    implementation 'com.google.android.gms:play-services-maps:11.8.0'
+
+    implementation "com.google.android.gms:play-services-base:15.0.1"
+    implementation "com.google.android.gms:play-services-maps:15.0.1"
 
     implementation project(':react-native-geocoder')
 }
@@ -162,3 +202,5 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
+
+apply plugin: 'com.google.gms.google-services'
