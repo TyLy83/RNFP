@@ -114,7 +114,7 @@ export default class DetailScreen extends Component {
                         backgroundColor: '#fff',
                         paddingVertical: paddingHorizontal,
                         paddingHorizontal: paddingHorizontal,
-                        marginHorizontal: paddingHorizontal
+                        // marginHorizontal: paddingHorizontal
                     }}
                 >
                     <View>

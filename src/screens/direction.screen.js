@@ -89,6 +89,7 @@ export default class DirectionScreen extends Component {
                 <HeaderDetails
                     title='Direction'
                     item={item}
+                    backgroundColor='#fff'
                     previous='Details'
                 />
                 <View
