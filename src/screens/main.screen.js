@@ -49,7 +49,7 @@ export default class MainScreen extends Component {
                 >
                     <Button
                         transparent
-                        onPress={()=> navigatorStore.openDrawer()}
+                        onPress={() => navigatorStore.openDrawer()}
                     >
                         <Icon
                             name='menu'
@@ -67,7 +67,7 @@ export default class MainScreen extends Component {
     displayList(list) {
 
         const { navigatorStore } = this.props;
-    
+
         return (
             <ScrollView
                 showsHorizontalScrollIndicator={false}
@@ -92,7 +92,10 @@ export default class MainScreen extends Component {
                                 }}
                             >
                                 <TouchableOpacity
-                                    onPress={() => navigatorStore.navigate('Details', { 'item': item })}
+                                    onPress={() => navigatorStore.navigate('Details', {
+                                        'item': item,
+                                        'id': id
+                                    })}
                                 >
                                     <Image
                                         source={uri}
@@ -124,7 +127,7 @@ export default class MainScreen extends Component {
                                                         <Text>
                                                             <Icon
                                                                 name='ios-star-outline'
-                                                                // style={{ fontSize: 18 }}
+                                                            // style={{ fontSize: 18 }}
                                                             />
                                                             {
                                                                 (() => {
@@ -148,7 +151,7 @@ export default class MainScreen extends Component {
                                                         <Text>
                                                             <Icon
                                                                 name='ios-chatboxes-outline'
-                                                                // style={{ fontSize: 18 }}
+                                                            // style={{ fontSize: 18 }}
                                                             />
                                                             {
                                                                 comments.length

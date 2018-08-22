@@ -3,6 +3,13 @@ export default data = [
         id: 0,
         restaurant: {
             name: "City Architecture Cafe",
+            location:{
+                strNumb: '500',
+                strName: 'Queen Street',
+                suburb: 'Auckland City',
+                postalCode: 1010,
+                country: 'New Zealand'
+            },
             description: "This cafe is in business to create the structure and systems needed to allow our customers access to the majority of their away-from-home daily meal requirements on a one-stop-shop basis.",
             images: [
                 {
@@ -115,6 +122,13 @@ export default data = [
         id: 1,
         restaurant: {
             name: "City Architecture Cafe",
+            location:{
+                strNumb: '500',
+                strName: 'Queen Street',
+                suburb: 'Auckland City',
+                postalCode: 1010,
+                country: 'New Zealand'
+            },
             description: "This cafe is in business to create the structure and systems needed to allow our customers access to the majority of their away-from-home daily meal requirements on a one-stop-shop basis.",
             images: [
                 {
@@ -227,6 +241,13 @@ export default data = [
         id: 2,
         restaurant: {
             name: "City Architecture Cafe",
+            location:{
+                strNumb: '500',
+                strName: 'Queen Street',
+                suburb: 'Auckland City',
+                postalCode: 1010,
+                country: 'New Zealand'
+            },
             description: "This cafe is in business to create the structure and systems needed to allow our customers access to the majority of their away-from-home daily meal requirements on a one-stop-shop basis.",
             images: [
                 {
@@ -328,6 +349,13 @@ export default data = [
         id: 3,
         restaurant: {
             name: "City Architecture Cafe",
+            location:{
+                strNumb: '500',
+                strName: 'Queen Street',
+                suburb: 'Auckland City',
+                postalCode: 1010,
+                country: 'New Zealand'
+            },
             description: "This cafe is in business to create the structure and systems needed to allow our customers access to the majority of their away-from-home daily meal requirements on a one-stop-shop basis.",
             images: [
                 {
@@ -440,6 +468,13 @@ export default data = [
         id: 4,
         restaurant: {
             name: "City Architecture Cafe",
+            location:{
+                strNumb: '500',
+                strName: 'Queen Street',
+                suburb: 'Auckland City',
+                postalCode: 1010,
+                country: 'New Zealand'
+            },
             description: "This cafe is in business to create the structure and systems needed to allow our customers access to the majority of their away-from-home daily meal requirements on a one-stop-shop basis.",
             images: [
                 {
@@ -552,6 +587,13 @@ export default data = [
         id: 5,
         restaurant: {
             name: "City Architecture Cafe",
+            location:{
+                strNumb: '500',
+                strName: 'Queen Street',
+                suburb: 'Auckland City',
+                postalCode: 1010,
+                country: 'New Zealand'
+            },
             description: "This cafe is in business to create the structure and systems needed to allow our customers access to the majority of their away-from-home daily meal requirements on a one-stop-shop basis.",
             images: [
                 {

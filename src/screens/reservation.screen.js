@@ -16,12 +16,9 @@ export default class ReservationScreen extends Component {
     render() {
 
         const { paddingHorizontal, paddingVertical } = variables.globalVariables;
-        const { params } = this.props.navigation.state;
-        const item = params ? params.item : null;
-        const { restaurant } = item;
-        const { ratings } = restaurant;
-        const width = Dimensions.get('window').width;
-
+        const { databaseStore } = this.props;
+        const item = databaseStore.item
+       
         return (
             <ContainerComponent
                 coverColor='#fff'
@@ -59,14 +56,6 @@ export default class ReservationScreen extends Component {
                             </View>
                         </View>
                     </ScrollView>
-                </View>
-                <View
-                    style={[{ width: width, backgroundColor: '#fff' }]}
-                >
-                    <FooterDetails
-                        title='Reservation'
-                        item={item}
-                    />
                 </View>
             </ContainerComponent>
         )

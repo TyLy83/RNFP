@@ -1,14 +1,17 @@
 import { observable, action } from 'mobx';
-import source from './data.json';
+// import source from './data.json';
 import data from './data';
-import { Item } from 'native-base';
+// import { Item } from 'native-base';
 
 export default class DatabaseStore {
+
+    @observable item = null;
 
     @observable list = data;
 
     @action details(key) {
-        return this.list[key];
+        this.item = this.list[key];
+        return this.item;
     }
 
     @action load() {

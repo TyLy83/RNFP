@@ -13,21 +13,26 @@ import FooterDetails from '../components/footer.details';
 @observer
 export default class RatingScreen extends Component {
 
+    componentDidMount() {
+        // console.log('component did mounted::')
+        // const item = this.props.navigation.getParam('item');
+        // this.props.navigation.setParams({ 'item': item })
+    }
+
     render() {
 
         const { paddingHorizontal, paddingVertical } = variables.globalVariables;
-        const { params } = this.props.navigation.state;
-        const item = params ? params.item : null;
+        const { databaseStore } = this.props;
+        const  item = databaseStore.item;
         const { restaurant } = item;
         const { ratings } = restaurant;
-        const width = Dimensions.get('window').width;
 
         return (
             <ContainerComponent
                 coverColor='#fff'
             >
                 <HeaderDetails
-                    title={restaurant.name}
+                    title='Ratings'
                     item={item}
                     previous='Details'
                 />
@@ -50,6 +55,7 @@ export default class RatingScreen extends Component {
                                 ratings.map((rating, i) => {
                                     return (
                                         <View
+                                            key={i}
                                             style={{
                                                 flexDirection: 'column',
                                                 paddingVertical: paddingVertical / 2,
@@ -123,14 +129,6 @@ export default class RatingScreen extends Component {
                             }
                         </View>
                     </ScrollView>
-                </View>
-                <View
-                    style={[{ width: width, backgroundColor: '#fff' }]}
-                >
-                    <FooterDetails
-                        title='Ratings'
-                        item={item}
-                    />
                 </View>
             </ContainerComponent>
         )

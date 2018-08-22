@@ -16,14 +16,17 @@ import ContainerComponent from '../components/container.component';
 import variables from '../variables/index.variables';
 import HeaderDetails from '../components/header.details';
 import FooterDetails from '../components/footer.details';
+import BottomNavigator from '../navigators/bottom.navigator';
 
 const { globalVariables, globalStyles } = variables;
 const { paddingHorizontal, paddingVertical } = globalVariables;
+const { iconStyle } = globalStyles;
 const { width } = Dimensions.get('window');
 
 
 @inject('databaseStore')
 @inject('navigatorStore')
+@inject('geocoderStore')
 @observer
 export default class DetailScreen extends Component {
 
@@ -203,7 +206,9 @@ export default class DetailScreen extends Component {
     render() {
 
         const { params } = this.props.navigation.state;
-        const item = params ? params.item : null;
+        const { databaseStore, navigatorStore } = this.props;
+        const id = params.id;
+        const item = databaseStore.details(id);
         const { restaurant } = item;
 
         return (
@@ -228,12 +233,22 @@ export default class DetailScreen extends Component {
                     }
                 </View>
                 <View
-                    style={[ { width: width,  backgroundColor: '#fff'} ]}
+                    style={[{ 
+                        width: width, 
+                        backgroundColor: '#fff',
+                        flexDirection: 'row',
+                        justifyContent:'flex-end' 
+                    }]}
                 >
-                    <FooterDetails
-                        item={item}
-                        backgroundColor='#fff'
-                    />
+                    <Button
+                        transparent
+                        onPress = {()=> navigatorStore.navigate('Reservation') }
+                    >
+                        <Icon
+                            name='ios-more-outline'
+                            style={iconStyle}
+                        />
+                    </Button>
                 </View>
             </ContainerComponent>
         )

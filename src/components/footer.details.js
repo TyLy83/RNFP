@@ -12,9 +12,14 @@ const { width } = Dimensions.get('window');
 @observer
 export default class FooterDetails extends Component {
 
+    navigate(route, params){
+        const { navigatorStore } = this.props;
+        navigatorStore.navigate(route, params)
+    }
+
     renderContent() {
 
-        const { navigatorStore, item, title, backgroundColor } = this.props;
+        const { item, title, backgroundColor } = this.props;
         const { iconStyle } = globalStyles;
 
         return (
@@ -29,7 +34,7 @@ export default class FooterDetails extends Component {
                 <Button
                     transparent
                     onPress={() => {
-                        navigatorStore.navigate('Reservation', { 'item': item })
+                        this.navigate('Reservation',{'id': item.id})
                     }}
                 >
                     <Icon
@@ -40,7 +45,7 @@ export default class FooterDetails extends Component {
                 <Button
                     transparent
                     onPress={() => {
-                        navigatorStore.navigate('Direction', { 'item': item })
+                        this.navigate('Direction',{'id': item.id})
                     }}
                 >
                     <Icon
@@ -51,7 +56,7 @@ export default class FooterDetails extends Component {
                 <Button
                     transparent
                     onPress={() => {
-                        navigatorStore.navigate('Ratings', { 'item': item })
+                       this.navigate('Ratings',{'id': item.id})
                     }}
                 >
                     <Icon
@@ -62,7 +67,7 @@ export default class FooterDetails extends Component {
                 <Button
                     transparent
                     onPress={() => {
-                        navigatorStore.navigate('Favorites', { 'item': item })
+                        this.navigate('Favorites',{'id': item.id})
                     }}
                 >
                     <Icon
@@ -73,7 +78,7 @@ export default class FooterDetails extends Component {
                 <Button
                     transparent
                     onPress={() => {
-                        navigatorStore.navigate('Comments', { 'item': item })
+                        this.navigate('Comments',{'id': item.id})
                     }}
                 >
                     <Icon
@@ -94,7 +99,7 @@ export default class FooterDetails extends Component {
                 style={{
                     paddingHorizontal: paddingHorizontal,
                     width: width,
-                    backgroundColor: { backgroundColor },
+                    backgroundColor: backgroundColor,
                 }}
             >
                 {

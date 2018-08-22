@@ -17,12 +17,12 @@ import ReservationScreen from '../screens/reservation.screen';
 const mainNavConfig = {
     Main: MainScreen,
     Details: DetailScreen,
-    // BottomNavigator: BottomNavigator,
-    Ratings: RatingScreen,
-    Favorites: FavoriteScreen,
-    Comments: CommentScreen,
-    Direction: DirectionScreen,
-    Reservation: ReservationScreen,
+    BottomNavigator: BottomNavigator,
+    // Ratings: RatingScreen,
+    // Favorites: FavoriteScreen,
+    // Comments: CommentScreen,
+    // Direction: DirectionScreen,
+    // Reservation: ReservationScreen,
 }
 
 // main route configs

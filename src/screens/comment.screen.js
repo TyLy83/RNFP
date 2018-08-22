@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { Platform, Dimensions, ScrollView, View, Text, Image } from 'react-native';
+import { Platform, Dimensions, StyleSheet, ScrollView, View, Text, Image } from 'react-native';
 import { Icon, Button } from 'native-base';
 import { observer, inject } from 'mobx-react/native';
 import ContainerComponent from '../components/container.component';
 import variables from '../variables/index.variables';
 import HeaderDetails from '../components/header.details';
-import FooterDetails from '../components/footer.details';
 
 const { width } = Dimensions.get('window');
 const { globalVariables } = variables;
@@ -17,9 +16,9 @@ const { paddingHorizontal, paddingVertical } = globalVariables;
 export default class CommentScreen extends Component {
 
     render() {
-        
-        const { params } = this.props.navigation.state;
-        const { item } = params;
+
+        const { databaseStore } = this.props;
+        const item = databaseStore.item
         const { restaurant } = item;
         const { comments } = restaurant;
 
@@ -29,7 +28,7 @@ export default class CommentScreen extends Component {
             >
                 <HeaderDetails
                     item={item}
-                    title={restaurant.name}
+                    title='Comments'
                     previous='Details'
                 />
                 <View
@@ -45,7 +44,7 @@ export default class CommentScreen extends Component {
                         <View
                             style={{
                                 flex: 1,
-                                paddingBottom: paddingVertical * 3,
+                                paddingBottom: paddingVertical,
                             }}
                         >
                             {
@@ -53,23 +52,11 @@ export default class CommentScreen extends Component {
                                     return (
                                         <View
                                             key={i}
-                                            style={{
-                                                marginVertical: paddingHorizontal,
-                                                marginHorizontal: paddingHorizontal,
-                                                paddingVertical: paddingHorizontal,
-                                                paddingHorizontal: paddingHorizontal,
-                                                justifyContent: 'center',
-                                                alignItems: 'center',
-                                                backgroundColor: '#fff',
-                                            }}
+                                            style={ styles.comment }
                                         >
                                             <Image
-                                                source={comment.user.pictureUri}
-                                                style={{
-                                                    height: 60,
-                                                    width: 60,
-                                                    borderRadius: 30,
-                                                }}
+                                                source={ comment.user.pictureUri }
+                                                style={ styles.avatar }
                                             />
                                             <Text
                                                 style={{
@@ -94,17 +81,25 @@ export default class CommentScreen extends Component {
                         </View>
                     </ScrollView>
                 </View>
-                <View
-                    style={[{ width: width, backgroundColor: '#fff' }]}
-                >
-                    <FooterDetails
-                        title='Comments'
-                        item={item}
-                        backgroundColor='#fff'
-                    />
-                </View>
             </ContainerComponent>
         )
     }
 }
+
+const styles = StyleSheet.create({
+    comment: {
+        marginVertical: paddingHorizontal,
+        marginHorizontal: paddingHorizontal,
+        paddingVertical: paddingHorizontal,
+        paddingHorizontal: paddingHorizontal,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#fff',
+    },
+    avatar: {
+        height: 60,
+        width: 60,
+        borderRadius: 30,
+    }
+})
 

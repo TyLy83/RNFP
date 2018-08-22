@@ -37,7 +37,8 @@ export default class ContainerComponent extends Component {
                         ]}
                     >
                         <StatusBar
-                            backgroundColor={this.props.coverColor}
+                            barStyle = { Platform.OS == 'ios'? null : 'dark-content' }
+                            backgroundColor={ this.props.coverColor }
                             hidden={this.starBarHidden ? true : false}
                         />
                         <SafeAreaView

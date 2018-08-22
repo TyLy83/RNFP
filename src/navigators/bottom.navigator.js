@@ -4,41 +4,60 @@
 
 import React from 'react';
 import { createBottomTabNavigator } from 'react-navigation';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+// import { Icon } from 'native-base';
+import Icon from 'react-native-vector-icons/Ionicons';
 import CommentScreen from '../screens/comment.screen';
 import FavoriteScreen from '../screens/favorite.screen';
 import RatingScreen from '../screens/rating.screen';
+import DirectionScreen from '../screens/direction.screen';
+import ReservationScreen from '../screens/reservation.screen';
+
 
 const botNavConfig = {
-    // Ratings: RatingScreen,
+    Ratings: RatingScreen,
     Favorites: FavoriteScreen,
-    Comments: CommentScreen
+    Comments: CommentScreen,
+    Direction: DirectionScreen,
+    Reservation: ReservationScreen
 }
 
 const botRouteConfig = { 
        
     navigationOptions: ({ navigation }) => ({
+
         tabBarIcon: ({ focused, tintColor }) => {
+
             const { routeName } = navigation.state;
+
             let iconName;
+
             if (routeName === 'Ratings') {
-                iconName = `star${focused ? '' : '-outline'}`;
+                iconName = `ios-star${focused ? '' : '-outline'}`;
             } else if (routeName === 'Favorites') {
-                iconName = `heart${focused ? '' : '-outline'}`;
+                iconName = `ios-heart${focused ? '' : '-outline'}`;
             } else if (routeName === 'Comments') {
-                iconName = `message${focused ? '' : '-outline'}`;
+                iconName = `ios-chatboxes${focused ? '' : '-outline'}`;
+            } else if (routeName === 'Reservation'){
+                iconName = `ios-calendar${focused ? '' : '-outline'}`;
+            } else if (routeName === 'Direction'){
+                iconName = `ios-pin${focused ? '' : '-outline'}`;
             }
+
             return <Icon name={iconName} size={25} color={tintColor} />;
         },
+        
     }),
     tabBarOptions: {
+        showLabel: false,
         activeTintColor: '#000',
         inactiveTintColor: '#333',
         style: {
             backgroundColor: '#fff',
-            borderTopWidth: 0,
+            borderTopColor: '#fff',
+            borderTopWidth: 1,
         }
     },
+    order: ['Reservation','Direction','Ratings','Favorites','Comments']
 }
 
 const DetailTabNavigator = createBottomTabNavigator(botNavConfig, botRouteConfig);

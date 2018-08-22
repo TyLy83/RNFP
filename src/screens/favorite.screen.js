@@ -9,6 +9,7 @@ import FooterDetails from '../components/footer.details';
 
 
 @inject('navigatorStore')
+@inject('databaseStore')
 @observer
 export default class FavoriteScreen extends Component {
 
@@ -16,10 +17,9 @@ export default class FavoriteScreen extends Component {
     render() {
 
         const { paddingHorizontal, paddingVertical } = variables.globalVariables;
-        const { params } = this.props.navigation.state;
-        const item = params ? params.item : null;
+        const { databaseStore } = this.props;
+        const item = databaseStore.item;
         const { favorites } = item.restaurant;
-        const width = Dimensions.get('window').width;
 
         return (
             <ContainerComponent
@@ -27,7 +27,7 @@ export default class FavoriteScreen extends Component {
             >
                 <HeaderDetails
                     item={item}
-                    title={item.restaurant.name}
+                    title='Favorites'
                     previous='Details'
                 />
                 <View
@@ -95,14 +95,6 @@ export default class FavoriteScreen extends Component {
                             }
                         </View>
                     </ScrollView>
-                </View>
-                <View
-                    style={[{ width: width, backgroundColor: '#fff' }]}
-                >
-                    <FooterDetails
-                        title='Favorites'
-                        item={item}
-                    />
                 </View>
             </ContainerComponent>
         )
