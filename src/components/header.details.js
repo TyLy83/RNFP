@@ -68,7 +68,7 @@ export default class HeaderDetails extends Component {
         return (
             <View
                 style={{
-                    paddingHorizontal: paddingHorizontal,
+                    // paddingHorizontal: paddingHorizontal,
                     backgroundColor: backgroundColor,
                 }}
             >
