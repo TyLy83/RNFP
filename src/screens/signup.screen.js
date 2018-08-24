@@ -10,6 +10,7 @@ import { Item, Input, Icon, Button, Text, H3 } from 'native-base';
 import { observer, inject } from 'mobx-react/native';
 
 
+
 @inject('authenticatorStore')
 @inject('navigatorStore')
 @observer
@@ -106,7 +107,7 @@ export default class SignupScreen extends Component {
             }}>
               <Text style={{ color: '#fff', paddingVertical: 10 }}>Connect to social app</Text>
               <View style={{ flex: 1, flexDirection: 'row', }}>
-                <Text onPress={() => alert('facebook')}>
+                <Text onPress={() => authenticatorStore.facebookLogin() }>
                   <Icon name='facebook-square' type='FontAwesome' style={{ color: '#fff' }} />
                 </Text>
                 <Text style={{ paddingHorizontal: 10 }} onPress={() => alert('google')}>

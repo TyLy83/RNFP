@@ -6,6 +6,12 @@ import android.app.Application;
 
 import com.facebook.react.ReactApplication;
 
+// import com.facebook.reactnative.androidsdk.FBSDKPackage;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookSdk;
+import com.facebook.reactnative.androidsdk.FBSDKPackage;
+import com.facebook.appevents.AppEventsLogger;
+
 import com.oblador.vectoricons.VectorIconsPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.facebook.react.ReactNativeHost;
@@ -42,6 +48,12 @@ import io.invertase.firebase.RNFirebasePackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
+  private static CallbackManager mCallbackManager = CallbackManager.Factory.create();
+
+  protected static CallbackManager getCallbackManager() {
+      return mCallbackManager;
+  }
+
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
     @Override
     public boolean getUseDeveloperSupport() {
@@ -53,6 +65,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+          new FBSDKPackage(mCallbackManager),
           new VectorIconsPackage(),
           new SplashScreenReactPackage(),
           new MapsPackage(),
@@ -91,7 +104,9 @@ public class MainApplication extends Application implements ReactApplication {
 
   @Override
   public void onCreate() {
-    super.onCreate();
-    SoLoader.init(this, /* native exopackage */ false);
+      super.onCreate();
+      AppEventsLogger.activateApp(this);
+      SoLoader.init(this, /* native exopackage */ false);
+
   }
 }
