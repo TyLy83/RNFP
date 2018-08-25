@@ -72,6 +72,26 @@
   <key>CFBundleURLTypes</key>
   <array>
     <dict>
+      <key>CFBundleTypeRole</key>
+      <string>Editor</string>
+      <key>CFBundleURLName</key>
+      <string>com.googleusercontent.apps.346690541994-rb926tnnt5j0fe4pjpkhhcanpv6tqag1</string>
+      <key>CFBundleURLSchemes</key>
+      <array>
+        <string>com.googleusercontent.apps.346690541994-rb926tnnt5j0fe4pjpkhhcanpv6tqag1</string>
+      </array>
+    </dict>
+    <dict>
+      <key>CFBundleTypeRole</key>
+      <string>Editor</string>
+      <key>CFBundleURLName</key>
+      <string>com.rnfp</string>
+      <key>CFBundleURLSchemes</key>
+      <array>
+        <string>com.rnfp</string>
+      </array>
+    </dict>
+    <dict>
       <key>CFBundleURLSchemes</key>
       <array>
         <string>fb1935827376509922</string>

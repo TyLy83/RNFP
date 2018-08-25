@@ -3,11 +3,18 @@ import { observable, action } from 'mobx';
 import NavigatorStore from './navigator.store';
 import firebase from 'react-native-firebase';
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
+import { GoogleSignin, statusCodes } from 'react-native-google-signin';
 
 
 export default class AuthenticatorStore {
 
     navigatorStore = new NavigatorStore();
+
+    constructor() {
+        GoogleSignin.configure({
+            iosClientId: '346690541994-rb926tnnt5j0fe4pjpkhhcanpv6tqag1.apps.googleusercontent.com'
+        })
+    }
 
     @observable user = {
         email: null,
@@ -73,20 +80,6 @@ export default class AuthenticatorStore {
     }
 
     @action facebookLogin() {
-        // LoginManager.logInWithReadPermissions(['public_profile']).then((result) => {
-        //     if (result.isCancelled) {
-        //         console.log('Login cancelled');
-        //     } else {
-        //         AccessToken.getCurrentAccessToken().then((data) => {
-        //             // console.log(data.accessToken.toString())
-        //             const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
-        //             const currentUser = await firebase.auth().signInAndRetrieveDataWithCredential(credential);
-        //             console.log(JSON.stringify(currentUser));
-        //         })
-        //     }
-        // }, (error) => {
-        //     alert(error)
-        // });
         (async () => {
             try {
                 const result = await LoginManager.logInWithReadPermissions(['public_profile', 'email']);
@@ -95,7 +88,7 @@ export default class AuthenticatorStore {
                     throw new Error('User cancelled request'); // Handle this however fits the flow of your app
                 }
 
-                console.log(`Login success with permissions: ${result.grantedPermissions.toString()}`);
+                // console.log(`Login success with permissions: ${result.grantedPermissions.toString()}`);
 
                 // get the access token
                 const data = await AccessToken.getCurrentAccessToken();
@@ -110,11 +103,35 @@ export default class AuthenticatorStore {
                 // login with credential
                 const currentUser = await firebase.auth().signInAndRetrieveDataWithCredential(credential);
 
-                console.info(JSON.stringify(currentUser.user.toJSON()));
+                // console.info(JSON.stringify(currentUser.user.toJSON()));
 
             } catch (e) {
                 console.error(e);
             }
+        })()
+    }
+
+    @action googleLogin() {
+        ( () => {
+            GoogleSignin
+                .signIn()
+                .then((data) => {
+
+                    // console.info(JSON.stringify(data));
+
+                    const credential = firebase.auth.GoogleAuthProvider.credential(data.idToken, data.accessToken);
+
+                    const currentUser = firebase.auth().signInAndRetrieveDataWithCredential(credential);
+
+                    console.info(JSON.stringify(currentUser));
+
+                })
+                // .then((currentUser)=>{
+                //     console.log(JSON.stringify(currentUser.user))
+                // })
+                .catch(error => {
+                    console.error(error);
+                })
         })()
     }
 

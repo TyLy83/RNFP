@@ -26,7 +26,7 @@ export default class LoginScreen extends Component {
 		const authenticatorStore = this.props.authenticatorStore;
 		const user = authenticatorStore.user;
 
-		console.log(`authenticatorStore::${JSON.stringify(authenticatorStore.user)}`)
+		// console.log(`authenticatorStore::${JSON.stringify(authenticatorStore.user)}`)
 
 		return (
 			<BgimageComponent

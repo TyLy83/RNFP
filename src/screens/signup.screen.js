@@ -110,7 +110,7 @@ export default class SignupScreen extends Component {
                 <Text onPress={() => authenticatorStore.facebookLogin() }>
                   <Icon name='facebook-square' type='FontAwesome' style={{ color: '#fff' }} />
                 </Text>
-                <Text style={{ paddingHorizontal: 10 }} onPress={() => alert('google')}>
+                <Text style={{ paddingHorizontal: 10 }} onPress={() => authenticatorStore.googleLogin() }>
                   <Icon name='google-plus-square' type='FontAwesome' style={{ color: '#fff' }} />
                 </Text>
               </View>

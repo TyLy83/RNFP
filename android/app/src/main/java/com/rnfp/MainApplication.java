@@ -5,10 +5,9 @@ import android.annotation.SuppressLint;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import co.apptailor.googlesignin.RNGoogleSigninPackage;
 
-// import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.facebook.CallbackManager;
-import com.facebook.FacebookSdk;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.facebook.appevents.AppEventsLogger;
 
@@ -23,6 +22,7 @@ import com.airbnb.android.react.maps.MapsPackage;
 import com.devfd.RNGeocoder.RNGeocoderPackage;
 
 import io.invertase.firebase.RNFirebasePackage;
+
 // optional packages - add/remove as appropriate
 import io.invertase.firebase.admob.RNFirebaseAdMobPackage;
 import io.invertase.firebase.analytics.RNFirebaseAnalyticsPackage;
@@ -65,6 +65,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+          new RNGoogleSigninPackage(),
           new FBSDKPackage(mCallbackManager),
           new VectorIconsPackage(),
           new SplashScreenReactPackage(),
